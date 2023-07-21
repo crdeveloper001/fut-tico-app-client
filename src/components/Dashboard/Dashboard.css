@@ -1,0 +1,12 @@
+.WebDescription{
+    margin-top: 10%;
+    text-align: justify;
+    color: white;
+    font-size: larger;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#Description{
+    background-image: url('../../assets/background1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
