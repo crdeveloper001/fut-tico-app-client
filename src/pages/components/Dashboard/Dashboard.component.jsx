@@ -23,7 +23,7 @@ export const Dashboard = () => {
               AL INSTANTE, LOS PARTIDOS DEL MOMENTO, EN ESTE SITIO PODRAS
               CONSULTAR TODA LA INFORMACION NECESARIA DE LAS CANCHAS DE FUTBOL
               EN EL PAIS Y PONERTE EN CONTACTO PARA HACER RESERVACIONES AQUI
-              MISMO EN 1 CLICK
+              MISMO EN 1 CLICK 
             </p>
           </Col>
         </Row>

@@ -1,6 +1,6 @@
 #SectionMainDescription {
   height: 60rem;
-  background-image: url("../../assets/background1.jpg");
+  background-image: url("src/assets/background1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
 }

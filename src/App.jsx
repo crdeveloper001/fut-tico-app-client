@@ -1,12 +1,12 @@
 import "./App.css";
-import { Dashboard } from "./components/Dashboard/Dashboard.component";
-import { Navigation } from "./components/Navigation/Navigation.component";
+import { Dashboard } from "./pages/components/Dashboard/Dashboard.component";
+import { Navigation } from "./pages/components/Navigation/Navigation.component";
 
 function App() {
   return (
     <>
       <section id="Dashboard">
-        <Navigation />
+        
         <Dashboard />
       </section>
     </>

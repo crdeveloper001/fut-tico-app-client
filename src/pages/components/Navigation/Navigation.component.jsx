@@ -1,6 +1,9 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Dashboard } from "../Dashboard/Dashboard.component";
+import { Login } from "../Login/Login.component";
+import { Register } from "../Register/Register.component";
 export const Navigation = () => {
   return (
     <div>
@@ -9,7 +12,7 @@ export const Navigation = () => {
           <Container>
             <Navbar.Brand href="#home">
               <img
-                src="./../../../src/assets/LogoCR.png"
+                src="src/assets/LogoCR.png"
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
@@ -19,18 +22,19 @@ export const Navigation = () => {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#Home">Home</Nav.Link>
-                <Nav.Link href="#Login">Inicia Sesion</Nav.Link>
-                <Nav.Link href="#Register">Registro</Nav.Link>
+               
+                <Nav.Link href="Home">Inicio</Nav.Link>
+                <Nav.Link href="Login">Login</Nav.Link>
+                <Nav.Link href="Register">Registro</Nav.Link>
                 <NavDropdown
                   title="Informacion General"
                   id="basic-nav-dropdown"
                 >
                   <NavDropdown.Item href="#action/3.1">
-                    Acerca de nosotros
+                    <Nav.Link to="/Home">test 1</Nav.Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
-                    Contactenos
+                    <Nav.Link to="/Home">test 2</Nav.Link>
                   </NavDropdown.Item>
                 </NavDropdown>
               </Nav>
