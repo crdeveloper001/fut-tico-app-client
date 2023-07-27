@@ -1,0 +1,9 @@
+#SectionLoginUser {
+    height: 60rem;
+    background-image: url("./src/assets/background1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.LoginCardSection{
+    margin-bottom: 1rem;
+}

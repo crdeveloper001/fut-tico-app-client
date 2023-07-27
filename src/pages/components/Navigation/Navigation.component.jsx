@@ -1,9 +1,6 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Dashboard } from "../Dashboard/Dashboard.component";
-import { Login } from "../Login/Login.component";
-import { Register } from "../Register/Register.component";
+
 export const Navigation = () => {
   return (
     <div>

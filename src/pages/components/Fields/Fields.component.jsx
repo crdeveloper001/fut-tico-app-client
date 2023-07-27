@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row, Card } from "react-bootstrap";
+import React, { useEffect, useState, } from "react";
+import { Col, Row, Card } from "react-bootstrap";
 
 export const Fields = () => {
+
   const [fieldsNumber, setFieldsNumber] = useState([]);
 
   const CreateExampleFields = () => {
@@ -38,7 +39,7 @@ export const Fields = () => {
 
     setFieldsNumber([...objectsFields]);
 
-    console.log(fieldsNumber);
+    
   };
 
   useEffect(() => {
@@ -46,27 +47,32 @@ export const Fields = () => {
   }, []);
 
   return (
-    <div>
-      {fieldsNumber.map((item) => {
-        console.log(item);
-        return (
-          <Row xs={1} md={2} className="g-4">
-            <Col key={item.id}>
-              <Card>
-                <Card.Img variant="top" src="holder.js/100px160" />
-                <Card.Body>
-                  <Card.Title>{item.name}</Card.Title>
-                  <Card.Text>
-                    This is a longer card with supporting text below as a
-                    natural lead-in to additional content. This content is a
-                    little bit longer.
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        );
-      })}
-    </div>
+
+    <section >
+      <div id="FieldsSearchSection" >
+        {fieldsNumber.map((item) => {
+          
+          return (
+            <Row xs={1} md={2} className="g-4">
+              <Col key={item.id}>
+                <Card>
+                  <Card.Img variant="top" src="holder.js/100px160" />
+                  <Card.Body>
+                    <Card.Title>{item.name}</Card.Title>
+                    <Card.Text>
+                      This is a longer card with supporting text below as a
+                      natural lead-in to additional content. This content is a
+                      little bit longer.
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          );
+        })}
+      </div>
+
+    </section>
+
   );
 };
