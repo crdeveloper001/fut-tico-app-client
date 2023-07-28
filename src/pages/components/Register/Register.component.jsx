@@ -4,9 +4,8 @@ export const Register = () => {
   return (
     <section id="SectionLoginUser">
 
-    <Container >
-      <Row>
-        <Col md={6}>
+    <Container className='w-75'>
+     
         <Form>
               <Form.Group >
                 <Form.Label className='text-white'>Nombre</Form.Label>
@@ -27,12 +26,7 @@ export const Register = () => {
                 </Button>
               </Form.Group>
             </Form>
-        </Col>
-        <Col md={6}>
-
-          test 2
-        </Col>
-      </Row>
+        
     </Container>
   </section>
   )

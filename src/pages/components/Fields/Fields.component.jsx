@@ -1,6 +1,6 @@
 import React, { useEffect, useState, } from "react";
-import { Col, Row, Card } from "react-bootstrap";
-
+import { Col, Card, Container, Row, Form, Button } from "react-bootstrap";
+import './Fields.css'
 export const Fields = () => {
 
   const [fieldsNumber, setFieldsNumber] = useState([]);
@@ -13,6 +13,7 @@ export const Fields = () => {
         location: "Heredia",
         numberPhone: 99998888,
         available: true,
+        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
       },
       {
         id: 1,
@@ -20,6 +21,7 @@ export const Fields = () => {
         location: "San Jose",
         numberPhone: 99998888,
         available: true,
+        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
       },
       {
         id: 2,
@@ -27,6 +29,7 @@ export const Fields = () => {
         location: "Limon",
         numberPhone: 99998888,
         available: true,
+        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
       },
       {
         id: 3,
@@ -34,12 +37,45 @@ export const Fields = () => {
         location: "Puntarenas",
         numberPhone: 99998888,
         available: true,
+        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
+      },
+      {
+        id: 4,
+        name: "cancha 3",
+        location: "Limon",
+        numberPhone: 99998888,
+        available: true,
+        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
+      },
+      {
+        id: 5,
+        name: "cancha 4",
+        location: "Puntarenas",
+        numberPhone: 99998888,
+        available: true,
+        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
+      },
+      {
+        id: 6,
+        name: "cancha 3",
+        location: "Limon",
+        numberPhone: 99998888,
+        available: true,
+        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
+      },
+      {
+        id: 7,
+        name: "cancha 4",
+        location: "Puntarenas",
+        numberPhone: 99998888,
+        available: true,
+        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
       },
     ];
 
     setFieldsNumber([...objectsFields]);
 
-    
+
   };
 
   useEffect(() => {
@@ -50,26 +86,77 @@ export const Fields = () => {
 
     <section >
       <div id="FieldsSearchSection" >
-        {fieldsNumber.map((item) => {
-          
-          return (
-            <Row xs={1} md={2} className="g-4">
-              <Col key={item.id}>
+        <Container>
+          <br />
+          <Row>
+            <Col md={3}>
+              <Form>
+                <Form.Group>
+                  <Form.Label className="text-white">Nombre de la cancha</Form.Label>
+                  <Form.Control type="search" placeholder="nombre" />
+                </Form.Group>
+              </Form>
+
+            </Col>
+            <Col md={3}>
+              <Form>
+                <Form.Group>
+                  <Form.Label className="text-white">Categoria de Juego</Form.Label>
+                  <Form.Select>
+                    <option value="Todas">Todas</option>
+                    <option>Futbol 5</option>
+                    <option>Futbol 7</option>
+                    <option>Futbol 11</option>
+                    <option>Cancha Abierta</option>
+                  </Form.Select>
+                </Form.Group>
+              </Form>
+
+            </Col>
+            <Col md={3}>
+              <Form>
+                <Form.Group>
+                  <Form.Label className="text-white">Localizacion</Form.Label>
+                  <Form.Select>
+                    <option>San Jose</option>
+                    <option>Alajuela</option>
+                    <option>Cartago</option>
+                    <option>Heredia</option>
+                    <option>Puntarenas</option>
+                    <option>Limon</option>
+                    <option>Guanacaste</option>
+                  </Form.Select>
+                </Form.Group>
+              </Form>
+
+            </Col>
+          </Row>
+          <br />
+          <Row>
+            <hr />
+            {fieldsNumber.map((item) => (
+              <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
                 <Card>
-                  <Card.Img variant="top" src="holder.js/100px160" />
+
+                  <Card.Img variant="top" src={item.image} />
                   <Card.Body>
                     <Card.Title>{item.name}</Card.Title>
-                    <Card.Text>
-                      This is a longer card with supporting text below as a
-                      natural lead-in to additional content. This content is a
-                      little bit longer.
-                    </Card.Text>
+                    <Row>
+                      <Col >
+                       <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
+                        Localizacion
+                       </Button>
+                      </Col>
+                      <Col >
+
+                      </Col>
+                    </Row>
                   </Card.Body>
                 </Card>
               </Col>
-            </Row>
-          );
-        })}
+            ))}
+          </Row>
+        </Container>
       </div>
 
     </section>

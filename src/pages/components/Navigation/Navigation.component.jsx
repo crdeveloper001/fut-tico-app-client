@@ -7,7 +7,7 @@ export const Navigation = () => {
       <section id="NavigationPage">
         <Navbar expand="lg" className="bg-body-tertiary ">
           <Container>
-            <Navbar.Brand href="#home">
+            <Navbar.Brand href="home">
               <img
                 src="src/assets/LogoCR.png"
                 width="30"
