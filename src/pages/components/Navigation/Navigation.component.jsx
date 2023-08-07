@@ -2,6 +2,8 @@ import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 
 export const Navigation = () => {
+
+  
   return (
     <div>
       <section id="NavigationPage">
@@ -9,7 +11,7 @@ export const Navigation = () => {
           <Container>
             <Navbar.Brand href="home">
               <img
-                src="src/assets/LogoCR.png"
+                src="../../../assets/images/LogoCR.png"
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
