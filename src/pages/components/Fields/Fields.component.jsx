@@ -94,6 +94,8 @@ export const Fields = () => {
                 <Form.Group>
                   <Form.Label className="text-white">Nombre de la cancha</Form.Label>
                   <Form.Control type="search" placeholder="nombre" />
+                  <br />
+                  <Button variant="success" title="Buscar">Buscar</Button>
                 </Form.Group>
               </Form>
 
