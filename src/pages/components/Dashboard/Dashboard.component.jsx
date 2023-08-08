@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Dashboard.css";
 import { Row, Col, Button } from "react-bootstrap";
+import Service_Users from "../../../services/Users.service";
 
 export const Dashboard = () => {
 
+  const RequestAllUsers = () =>{
 
-
+    return Service_Users.GetAllCurrentUsers();
+  }
+  
   return (
+    useEffect(()=>{
+      RequestAllUsers()
+    },[]),
     <div>
       <section id="SectionMainDescription">
         <Row md={2}>

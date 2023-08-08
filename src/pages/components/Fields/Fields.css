@@ -1,8 +1,6 @@
 #FieldsSearchSection {
-    height: 60rem;
-    background-image: url("../../../assets/images/background1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: auto;
+    background-color: blue
 }
 .LoginCardSection{
     margin-bottom: 1rem;
