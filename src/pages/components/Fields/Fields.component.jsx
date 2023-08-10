@@ -1,85 +1,22 @@
 import React, { useEffect, useState, } from "react";
 import { Col, Card, Container, Row, Form, Button } from "react-bootstrap";
+import serviceAPI from "../../../services/Fields.service";
 import './Fields.css'
 export const Fields = () => {
 
   const [fieldsNumber, setFieldsNumber] = useState([]);
 
-  const CreateExampleFields = () => {
-    let objectsFields = [
-      {
-        id: 0,
-        name: "cancha 1",
-        location: "Heredia",
-        numberPhone: 99998888,
-        available: true,
-        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
-      },
-      {
-        id: 1,
-        name: "cancha 2",
-        location: "San Jose",
-        numberPhone: 99998888,
-        available: true,
-        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
-      },
-      {
-        id: 2,
-        name: "cancha 3",
-        location: "Limon",
-        numberPhone: 99998888,
-        available: true,
-        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
-      },
-      {
-        id: 3,
-        name: "cancha 4",
-        location: "Puntarenas",
-        numberPhone: 99998888,
-        available: true,
-        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
-      },
-      {
-        id: 4,
-        name: "cancha 3",
-        location: "Limon",
-        numberPhone: 99998888,
-        available: true,
-        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
-      },
-      {
-        id: 5,
-        name: "cancha 4",
-        location: "Puntarenas",
-        numberPhone: 99998888,
-        available: true,
-        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
-      },
-      {
-        id: 6,
-        name: "cancha 3",
-        location: "Limon",
-        numberPhone: 99998888,
-        available: true,
-        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
-      },
-      {
-        id: 7,
-        name: "cancha 4",
-        location: "Puntarenas",
-        numberPhone: 99998888,
-        available: true,
-        image: "https://www.canchas-deportivas.com/uploaded/mod_galeria/CentriGol.JPG"
-      },
-    ];
+  const LoadCurrentField = () => {
+    
+    let fieldInformation = serviceAPI.GetAllFields();
 
-    setFieldsNumber([...objectsFields]);
+    setFieldsNumber([...fieldInformation]);
 
 
   };
 
   useEffect(() => {
-    CreateExampleFields();
+    LoadCurrentField();
   }, []);
 
   return (
@@ -140,9 +77,9 @@ export const Fields = () => {
               <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
                 <Card>
 
-                  <Card.Img variant="top" src={item.image} />
+                 
                   <Card.Body>
-                    <Card.Title>{item.name}</Card.Title>
+                    <Card.Title>{item.fieldName}</Card.Title>
                     <Row>
                       <Col >
                        <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>

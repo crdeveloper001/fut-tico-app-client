@@ -5,15 +5,9 @@ import Service_Users from "../../../services/Users.service";
 
 export const Dashboard = () => {
 
-  const RequestAllUsers = () =>{
-
-    return Service_Users.GetAllCurrentUsers();
-  }
   
   return (
-    useEffect(()=>{
-      RequestAllUsers()
-    },[]),
+   
     <div>
       <section id="SectionMainDescription">
         <Row md={2}>
