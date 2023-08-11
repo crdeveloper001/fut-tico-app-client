@@ -1,10 +1,10 @@
 //API BASE ENDPOINTS
 export const BASE_URL = 'http://localhost:5000';
-export const BASE_CLOUD_URL = "not deploy"
+export const BASE_CLOUD_URL = "https://app-a51f3f31-e875-43b6-b74d-ef19d9045215.cleverapps.io"
 
 //FIELDS
 export const api_FieldsDeleteById = "/api/v1/Fields/DeleteField/";
-export const api_FieldsGetAllFields = "/api/v1/Fields/GetAllField/";
+export const api_FieldsGetAllFields = "/api/v1/Fields/GetAllField";
 export const api_FieldsUpdateField = "/api/v1/Fields/UpdateField";
 export const api_FieldsNewField = "/api/v1/Fields/NewField";
 export const api_FieldsSearchByLocation = "/api/v1/Fields/SearchByLocation/";

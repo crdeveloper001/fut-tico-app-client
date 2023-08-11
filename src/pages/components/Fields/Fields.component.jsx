@@ -1,22 +1,21 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState, } from "react";
 import { Col, Card, Container, Row, Form, Button } from "react-bootstrap";
 import serviceAPI from "../../../services/Fields.service";
 import './Fields.css'
 export const Fields = () => {
 
-  const [fieldsNumber, setFieldsNumber] = useState([]);
+  const [fields, setFields] = useState([]);
 
-  const LoadCurrentField = () => {
-    
-    let fieldInformation = serviceAPI.GetAllFields();
-
-    setFieldsNumber([...fieldInformation]);
-
-
-  };
+  const LoadFieldInfo = async () => {
+    serviceAPI.GetAllFields().then(response => {
+      setFields(response)
+      console.log("fields:",fields);
+    })
+  }
 
   useEffect(() => {
-    LoadCurrentField();
+    LoadFieldInfo()
   }, []);
 
   return (
@@ -32,7 +31,7 @@ export const Fields = () => {
                   <Form.Label className="text-white">Nombre de la cancha</Form.Label>
                   <Form.Control type="search" placeholder="nombre" />
                   <br />
-                  <Button variant="success" title="Buscar">Buscar</Button>
+                  <Button variant="success" title="Buscar" onClick={() => { LoadFieldInfo() }}>Buscar</Button>
                 </Form.Group>
               </Form>
 
@@ -73,7 +72,7 @@ export const Fields = () => {
           <br />
           <Row>
             <hr />
-            {fieldsNumber.map((item) => (
+            {fields.map((item) => (
               <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
                 <Card>
 
@@ -93,7 +92,7 @@ export const Fields = () => {
                   </Card.Body>
                 </Card>
               </Col>
-            ))}
+            ))} 
           </Row>
         </Container>
       </div>

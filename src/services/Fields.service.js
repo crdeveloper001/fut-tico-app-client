@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import {
-    BASE_URL,
+    BASE_CLOUD_URL,
     api_FieldsDeleteById,
     api_FieldsNewField,
     api_FieldsUpdateField,
@@ -11,23 +11,21 @@ import {
 
 
 async function GetAllFields() {
-    await axios({
-        method: "GET",
-        url: BASE_URL + api_FieldsGetAllFields,
-        withCredentials: false
-    }).then((apiResponse) => {
-         console.log(JSON.stringify(apiResponse));
-
-         return apiResponse;
-    }).catch((error) => {
-        return "OCURRIO UN ERROR AL OBTENER LA INFORMACION DE CANCHAS" + "\n" + JSON.stringify(error)
-    })
+    try {
+        const apiResponse = await axios({
+            method: "GET",
+            url: BASE_CLOUD_URL + api_FieldsGetAllFields,
+        });
+        return apiResponse.data; // Return the data from the API response
+    } catch (error) {
+        return "OCURRIO UN ERROR AL OBTENER LA INFORMACION DE CANCHAS" + "\n" + JSON.stringify(error);
+    }
 }
 
 async function SearchByLocation(location) {
     await axios({
         method: "GET",
-        url: BASE_URL + api_FieldsSearchByLocation + location
+        url: BASE_CLOUD_URL + api_FieldsSearchByLocation + location
     }).then((apiResponse) => {
         return console.log(JSON.stringify(apiResponse));
     }).catch((error) => {
@@ -41,7 +39,7 @@ async function NewField(field) {
         headers: {
             "Content-Type": "application/json"
         },
-        url: BASE_URL + api_FieldsNewField,
+        url: BASE_CLOUD_URL + api_FieldsNewField,
         data: {
             id: "",
             fieldName: field.fieldName,
@@ -63,7 +61,7 @@ async function UpdateField(update) {
         headers: {
             "Content-Type": "application/json",
         },
-        url: BASE_URL + api_FieldsUpdateField,
+        url: BASE_CLOUD_URL + api_FieldsUpdateField,
         data: {
             id: update.id,
             fieldName: update.fieldName,
@@ -83,7 +81,7 @@ async function DeleteField(idField) {
     if (idField != "" && idField != null) {
         await axios({
             method: "DELETE",
-            url: BASE_URL + api_FieldsDeleteById + idField,
+            url: BASE_CLOUD_URL + api_FieldsDeleteById + idField,
         })
             .then((apiResponse) => {
                 console.log(JSON.stringify(apiResponse));

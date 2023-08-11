@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+// eslint-disable-next-line no-unused-vars
+import React from "react";
 import "./Dashboard.css";
 import { Row, Col, Button } from "react-bootstrap";
-import Service_Users from "../../../services/Users.service";
 
 export const Dashboard = () => {
 

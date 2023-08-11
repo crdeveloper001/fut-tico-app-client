@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Form, Button } from "react-bootstrap";
 import serviceAPI from "../../../services/Users.service";
 
 export const Register = () => {
@@ -146,7 +147,7 @@ export const Register = () => {
             <Form.Label className="text-white">Apellidos</Form.Label>
             <Form.Control
               type="text"
-              placeholder="tu nombre"
+              placeholder="tu apellidos"
               required={true}
               id="InputUserLastName"
               onInput={(e) => {
@@ -160,7 +161,7 @@ export const Register = () => {
             <Form.Label className="text-white">Telefono</Form.Label>
             <Form.Control
               type="number"
-              placeholder="tu nombre"
+              placeholder="########"
               required={true}
               id="InputUserPhone"
               onInput={(e) => {
@@ -174,7 +175,7 @@ export const Register = () => {
             <Form.Label className="text-white">Correo Electronico</Form.Label>
             <Form.Control
               type="email"
-              placeholder="tu nombre"
+              placeholder="username@domain.com"
               required={true}
               id="InputUserEmail"
               onInput={(e) => {
@@ -199,7 +200,7 @@ export const Register = () => {
             <Form.Label className="text-white">Contraseña</Form.Label>
             <Form.Control
               type="password"
-              placeholder="tu nombre"
+             
               required={true}
               id="InputUserFirstPassword"
               onInput={(e) => {
