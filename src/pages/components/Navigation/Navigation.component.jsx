@@ -22,7 +22,7 @@ export const Navigation = () => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
                
-                <Nav.Link href="Home">Inicio</Nav.Link>
+                <Nav.Link href="/">Inicio</Nav.Link>
                 <Nav.Link href="Login">Login</Nav.Link>
                 <Nav.Link href="Register">Registro</Nav.Link>
                 <NavDropdown
