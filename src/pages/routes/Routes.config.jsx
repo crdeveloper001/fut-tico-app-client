@@ -9,7 +9,8 @@ export const RoutesConfig = () => {
   return (
     <BrowserRouter>
         <Routes>
-            <Route path='/Home' element={<Dashboard/>}/>
+         
+            <Route path='/' element={<Dashboard/>}/>
             <Route path='/SearchField' element={<Fields/>}/>
             <Route path='/Login' element={<Login/>}/>
             <Route path='/Register' element={<Register/>}/>
