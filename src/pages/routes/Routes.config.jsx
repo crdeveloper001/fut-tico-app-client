@@ -9,6 +9,7 @@ import { ClientDashboard } from '../components/ClientDashboard/ClientDashboard';
 import { ClientReservations } from '../components/ClientDashboard/ClientReservations/ClientReservations'
 import { ClientProfile } from '../components/ClientDashboard/ClientProfile/ClientProfile'
 import { CurrentFields } from '../components/AdminDashboard/CurrentFields/CurrentFields'
+import { AdminProfile } from '../components/AdminDashboard/Profile/AdminProfile'
 
 export const RoutesConfig = () => {
   return (
@@ -23,7 +24,7 @@ export const RoutesConfig = () => {
         <Route path='/Admin-CurrentFields' element={<CurrentFields />} />
         <Route path='/Admin-CurrentReservations' element={<CurrentFields />} />
         <Route path='/Admin-CurrentTournaments' element={<CurrentFields />} />
-        <Route path='/Admin-Profile' element={<CurrentFields />} />
+        <Route path='/Admin-Profile' element={<AdminProfile />} />
         <Route path='/Client-Dashboard' element={<ClientDashboard />} />
         <Route path='/Client-Reservation' element={<ClientReservations />} />
         <Route path='/Client-Profile' element={<ClientProfile />} />
