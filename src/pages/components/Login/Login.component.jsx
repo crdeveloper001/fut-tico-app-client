@@ -1,9 +1,20 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
+import {useNavigate} from 'react-router-dom';
 import './Login.css';
 import { Container, Card, Form, Button, FloatingLabel } from 'react-bootstrap'
 
 export const Login = () => {
+
+  const navigationApp = useNavigate();
+
+  const NavigateToAdminDashboard = () =>{
+
+    return navigationApp("/Admin-Dashboard")
+  }
+
+
+
   return (
     <section id="SectionLoginUser">
 
@@ -29,7 +40,7 @@ export const Login = () => {
                   </FloatingLabel>
                 </Form.Group>
                 <hr />
-                <Button variant="secondary" type='submit' onClick={() => { alert("iniciaste sesion") }}>
+                <Button variant="secondary" type='submit' onClick={() => { NavigateToAdminDashboard() }}>
                   Iniciar Sesion
                 </Button>
               </Form>

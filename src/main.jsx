@@ -9,9 +9,9 @@ import { RoutesConfig } from "./pages/routes/Routes.config.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Navigation/>
-    <RoutesConfig/>
-   
-   
+    <Navigation />
+    <RoutesConfig />
+
+
   </StrictMode>
 );
