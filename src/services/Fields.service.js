@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import {
-    BASE_CLOUD_URL,
+    BASE_URL,
     api_FieldsDeleteById,
     api_FieldsNewField,
     api_FieldsUpdateField,
@@ -14,7 +14,7 @@ async function GetAllFields() {
     try {
         const apiResponse = await axios({
             method: "GET",
-            url: BASE_CLOUD_URL + api_FieldsGetAllFields,
+            url: BASE_URL + api_FieldsGetAllFields,
         });
         return apiResponse.data; // Return the data from the API response
     } catch (error) {
@@ -25,7 +25,7 @@ async function GetAllFields() {
 async function SearchByLocation(location) {
     await axios({
         method: "GET",
-        url: BASE_CLOUD_URL + api_FieldsSearchByLocation + location
+        url: BASE_URL + api_FieldsSearchByLocation + location
     }).then((apiResponse) => {
         return console.log(JSON.stringify(apiResponse));
     }).catch((error) => {
@@ -39,7 +39,7 @@ async function NewField(field) {
         headers: {
             "Content-Type": "application/json"
         },
-        url: BASE_CLOUD_URL + api_FieldsNewField,
+        url: BASE_URL + api_FieldsNewField,
         data: {
             id: "",
             fieldName: field.fieldName,
@@ -61,7 +61,7 @@ async function UpdateField(update) {
         headers: {
             "Content-Type": "application/json",
         },
-        url: BASE_CLOUD_URL + api_FieldsUpdateField,
+        url: BASE_URL + api_FieldsUpdateField,
         data: {
             id: update.id,
             fieldName: update.fieldName,
@@ -81,7 +81,7 @@ async function DeleteField(idField) {
     if (idField != "" && idField != null) {
         await axios({
             method: "DELETE",
-            url: BASE_CLOUD_URL + api_FieldsDeleteById + idField,
+            url: BASE_URL + api_FieldsDeleteById + idField,
         })
             .then((apiResponse) => {
                 console.log(JSON.stringify(apiResponse));

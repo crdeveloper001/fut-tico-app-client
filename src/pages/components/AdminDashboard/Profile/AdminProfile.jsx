@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Form, Card, Stack, Button } from "react-bootstrap";
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {icon} from '@fortawesome/free-regular-svg-icons';
+
 export const AdminProfile = (payload) => {
   const [profileInfo, SetProfileInfo] = useState({});
   const [enableFields, SetEnableFields] = useState(false);
@@ -112,7 +111,7 @@ export const AdminProfile = (payload) => {
                   <Form.Label>ROL</Form.Label>
                   <Form.Control type="text" disabled={enableFields} />
                 </Form.Group>
-                <FontAwesomeIcon icon="fa-solid fa-x" />
+               
                 <Button type="submit" variant="success">
                   Save
                 </Button>

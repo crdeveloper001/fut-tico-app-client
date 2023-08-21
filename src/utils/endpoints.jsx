@@ -1,6 +1,6 @@
 //API BASE ENDPOINTS
-export const BASE_URL = 'http://localhost:5000';
-export const BASE_CLOUD_URL = "https://app-a51f3f31-e875-43b6-b74d-ef19d9045215.cleverapps.io"
+//export const BASE_URL = 'http://localhost:5000';
+export const BASE_URL = "https://app-a51f3f31-e875-43b6-b74d-ef19d9045215.cleverapps.io"
 
 //FIELDS
 export const api_FieldsDeleteById = "/api/v1/Fields/DeleteField/";

@@ -10,13 +10,13 @@ export const Fields = () => {
   const LoadFieldInfo = async () => {
     serviceAPI.GetAllFields().then(response => {
       setFields(response)
-      console.log("fields:",fields);
+      console.log("fields:", fields);
     })
   }
 
   useEffect(() => {
     LoadFieldInfo()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -77,23 +77,25 @@ export const Fields = () => {
               <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
                 <Card>
 
-                 
+                  <Card.Img variant="top" src={item.fieldPhotoURL} />
+
                   <Card.Body>
                     <Card.Title>{item.fieldName}</Card.Title>
                     <Row>
-                      <Col >
-                       <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
-                        Localizacion
-                       </Button>
-                      </Col>
-                      <Col >
+                      <Col>
 
+                      <Card.Text>{item.fieldDescription}</Card.Text>
+
+                        <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
+                          Localizacion
+                        </Button>
                       </Col>
+                     
                     </Row>
                   </Card.Body>
                 </Card>
               </Col>
-            ))} 
+            ))}
           </Row>
         </Container>
       </div>
