@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import serviceAPI from "../../../services/Authentication.service";
-import { Container, Card, Form, Button, FloatingLabel } from "react-bootstrap";
+import { Container, Card, Form, Button, FloatingLabel,Dropdown } from "react-bootstrap";
 
 export const Login = () => {
   const [payloadUser, SetUserPayload] = useState([]);
@@ -59,7 +59,7 @@ export const Login = () => {
   };
 
   const AuthenticateUserCredentials = async () => {
-    serviceAPI.AuthorizeProfile(userCredentials).then(response => {
+   await serviceAPI.AuthorizeProfile(userCredentials).then(response => {
       SetUserPayload(response);
 
       alert(payloadUser);
@@ -68,17 +68,15 @@ export const Login = () => {
 
   return (
     <section id="SectionLoginUser">
-      <Container>
-        <br />
-        <br />
-        <br />
-        <Card className="LoginCardSection">
+      <Container id="ContainerLogin">
+        
+        <Card className="LoginCardSection mt-5">
           <Card.Header className="text-center">
-            <h1>INICIAR SESION</h1>
+          INICIAR SESION
           </Card.Header>
           <Card.Body>
             <Card.Text>
-              <Form onSubmit={() => {AuthenticateUserCredentials()}}>
+              <Form >
                 <Form.Group controlId="form-group-id">
                   <FloatingLabel
                     controlId="floatingInput"
@@ -112,12 +110,15 @@ export const Login = () => {
                     {errorValidator.errorAccountPassword}
                   </span>
                 </Form.Group>
-                <hr />
+                
                 <Button
+                  className="mt-3"
                   disabled={buttonOnOff}
                   variant="secondary"
-                  type="submit"
-                
+                  type="button"
+                    onClick={() =>{
+                      AuthenticateUserCredentials()
+                    }}
                 >
                   Iniciar Sesion
                 </Button>
