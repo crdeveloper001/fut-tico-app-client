@@ -6,10 +6,12 @@ import { useNavigate } from 'react-router';
 export const AdminNavigation = () => {
 
     const changePayloadRol = () =>{
+        localStorage.clear()
         const Payload = localStorage.getItem('payload')
         const currentPayload = JSON.parse(Payload);
-
         currentPayload.userRol = null
+
+        this.forceUpdate()
     }
 
     
@@ -22,7 +24,7 @@ export const AdminNavigation = () => {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
 
-                            <Nav.Link href="/">Menu</Nav.Link>
+                            <Nav.Link href="/">Menu Administrador</Nav.Link>
                             <Nav.Link href="/home" onClick={() =>{changePayloadRol()}}>Log Out</Nav.Link>
 
 

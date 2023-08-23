@@ -62,17 +62,20 @@ export const Login = () => {
     localStorage.clear();
     const apiResponse = await serviceAPI.AuthorizeProfile(userCredentials);
     SetUserPayload(apiResponse.data);
-    localStorage.setItem("payload", JSON.stringify(apiResponse.data))
+
 
     switch (payloadUser.userRol) {
       case "Client":
+        localStorage.setItem("payload", JSON.stringify(apiResponse.data))
         alert("Client")
         navigationApp('/Client-Profile');
-        
+        this.forceUpdate();
         break;
       case "Administrator":
+        localStorage.setItem("payload", JSON.stringify(apiResponse.data))
         alert("Administrator")
         navigationApp('/Admin-Profile');
+        this.forceUpdate();
         break;
 
     }
