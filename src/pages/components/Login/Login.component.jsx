@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import serviceAPI from "../../../services/Authentication.service";
-import { Container, Card, Form, Button, FloatingLabel,Dropdown } from "react-bootstrap";
+import { Container, Card, Form, Button, FloatingLabel, Dropdown } from "react-bootstrap";
 
 export const Login = () => {
   const [payloadUser, SetUserPayload] = useState([]);
@@ -57,22 +57,36 @@ export const Login = () => {
       return null;
     }
   };
-
+  /**THIS METHOD AUTENTICATE THE USER CREDENTIALS AND RETURN A RESPONSE AND STORED INSIDE THE STATE AND LS */
   const AuthenticateUserCredentials = async () => {
-   await serviceAPI.AuthorizeProfile(userCredentials).then(response => {
-      SetUserPayload(response);
+    localStorage.clear();
+    const apiResponse = await serviceAPI.AuthorizeProfile(userCredentials);
+    SetUserPayload(apiResponse.data);
+    localStorage.setItem("payload", JSON.stringify(apiResponse.data))
 
-      alert(payloadUser);
-    });
+    switch (payloadUser.userRol) {
+      case "Client":
+        alert("Client")
+        navigationApp('/Client-Profile');
+        
+        break;
+      case "Administrator":
+        alert("Administrator")
+        navigationApp('/Admin-Profile');
+        break;
+
+    }
+
+    return apiResponse;
   };
 
   return (
     <section id="SectionLoginUser">
       <Container id="ContainerLogin">
-        
+
         <Card className="LoginCardSection mt-5">
           <Card.Header className="text-center">
-          INICIAR SESION
+            INICIAR SESION
           </Card.Header>
           <Card.Body>
             <Card.Text>
@@ -110,15 +124,15 @@ export const Login = () => {
                     {errorValidator.errorAccountPassword}
                   </span>
                 </Form.Group>
-                
+
                 <Button
                   className="mt-3"
                   disabled={buttonOnOff}
                   variant="secondary"
                   type="button"
-                    onClick={() =>{
-                      AuthenticateUserCredentials()
-                    }}
+                  onClick={() => {
+                    AuthenticateUserCredentials()
+                  }}
                 >
                   Iniciar Sesion
                 </Button>
