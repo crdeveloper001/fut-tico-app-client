@@ -28,19 +28,19 @@ export const NavigationHandler = (client_Navigation, administrator_Navigation, g
           SetGeneralNavigation(false);
           SetAdminDash(false);
           SetClientDash(true);
-          this.forceUpdate();
+          
           break;
         case "Administrator":
           SetGeneralNavigation(false);
           SetClientDash(false);
           SetAdminDash(true);
-          this.forceUpdate();
+
           break;
         case null:
           SetGeneralNavigation(true);
           SetClientDash(false);
           SetAdminDash(false);
-          this.forceUpdate();
+
           break;
       }
     }
