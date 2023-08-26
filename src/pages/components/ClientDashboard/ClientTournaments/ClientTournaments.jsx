@@ -1,11 +1,10 @@
 import React from 'react'
 import { ClientNavigation } from '../ClientNavigation/ClientNavigation'
 
-export const ClientReservations = () => {
+export const ClientTournaments = () => {
   return (
     <div>
-      <ClientNavigation/>
-      TEST
+        <ClientNavigation/>
     </div>
   )
 }

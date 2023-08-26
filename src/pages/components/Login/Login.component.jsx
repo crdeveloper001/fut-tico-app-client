@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import serviceAPI from "../../../services/Authentication.service";
 import { Container, Card, Form, Button, FloatingLabel, Dropdown } from "react-bootstrap";
+import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 
 export const Login = () => {
   const [payloadUser, SetUserPayload] = useState([]);
@@ -68,13 +69,13 @@ export const Login = () => {
       case "Client":
         localStorage.setItem("payload", JSON.stringify(apiResponse.data))
         alert("Client")
-        navigationApp('/Client-Profile');
+        navigationApp('/Client-Dashboard');
         this.forceUpdate();
         break;
       case "Administrator":
         localStorage.setItem("payload", JSON.stringify(apiResponse.data))
         alert("Administrator")
-        navigationApp('/Admin-Profile');
+        navigationApp('/Admin-Dashboard');
         this.forceUpdate();
         break;
 
@@ -85,6 +86,7 @@ export const Login = () => {
 
   return (
     <section id="SectionLoginUser">
+      <PublicNavigation/>
       <Container id="ContainerLogin">
 
         <Card className="LoginCardSection mt-5">

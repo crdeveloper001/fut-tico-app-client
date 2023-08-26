@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Dashboard } from '../components/Dashboard/Dashboard.component'
@@ -10,6 +11,7 @@ import { ClientReservations } from '../components/ClientDashboard/ClientReservat
 import { ClientProfile } from '../components/ClientDashboard/ClientProfile/ClientProfile'
 import { CurrentFields } from '../components/AdminDashboard/CurrentFields/CurrentFields'
 import { AdminProfile } from '../components/AdminDashboard/Profile/AdminProfile'
+import { ClientTournaments } from '../components/ClientDashboard/ClientTournaments/ClientTournaments'
 
 export const RoutesConfig = () => {
   return (
@@ -27,6 +29,7 @@ export const RoutesConfig = () => {
         <Route path='/Admin-Profile' element={<AdminProfile />} />
         <Route path='/Client-Dashboard' element={<ClientDashboard />} />
         <Route path='/Client-Reservation' element={<ClientReservations />} />
+        <Route path='/Client-Tournaments' element={<ClientTournaments/> } />
         <Route path='/Client-Profile' element={<ClientProfile />} />
 
       </Routes>

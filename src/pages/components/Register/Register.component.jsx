@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 import serviceAPI from "../../../services/Users.service";
+import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 
 export const Register = () => {
   const [button_on_off, SetButtonOnOff] = useState(true);
@@ -125,9 +126,11 @@ export const Register = () => {
 
   return (
     <section id="SectionLoginUser">
+
+      <PublicNavigation />
       <Container className="w-75">
         <Form
-         
+
         >
           <Form.Group>
             <Form.Label className="text-white">Nombre</Form.Label>
@@ -200,7 +203,7 @@ export const Register = () => {
             <Form.Label className="text-white">Contraseña</Form.Label>
             <Form.Control
               type="password"
-             
+
               required={true}
               id="InputUserFirstPassword"
               onInput={(e) => {
@@ -211,7 +214,7 @@ export const Register = () => {
               {errorUserProfile.errorAccountPassword}
             </span>
             <hr />
-            <Button variant="success" type="button" disabled={button_on_off} onClick={() =>{
+            <Button variant="success" type="button" disabled={button_on_off} onClick={() => {
               SendDataToAPI();
             }}>
               Crear Cuenta

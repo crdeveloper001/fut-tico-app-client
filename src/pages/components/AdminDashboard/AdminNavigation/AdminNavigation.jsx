@@ -13,7 +13,6 @@ export const AdminNavigation = () => {
 
         this.forceUpdate()
     }
-
     
     return (
         <section>

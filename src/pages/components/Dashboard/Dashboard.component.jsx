@@ -2,14 +2,18 @@
 import React from "react";
 import "./Dashboard.css";
 import { Row, Col, Button } from "react-bootstrap";
+import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 
 export const Dashboard = () => {
+
+  
 
   
   return (
    
     <div>
       <section id="SectionMainDescription">
+        <PublicNavigation/>
         <Row md={2}>
           <Col>
             <p className="WebDescription">

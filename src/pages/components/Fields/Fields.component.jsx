@@ -3,6 +3,7 @@ import React, { useEffect, useState, } from "react";
 import { Col, Card, Container, Row, Form, Button } from "react-bootstrap";
 import serviceAPI from "../../../services/Fields.service";
 import './Fields.css'
+import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 export const Fields = () => {
 
   const [fields, setFields] = useState([]);
@@ -10,7 +11,7 @@ export const Fields = () => {
   const LoadFieldInfo = async () => {
     serviceAPI.GetAllFields().then(response => {
       setFields(response)
-      console.log("fields:", fields);
+     
     })
   }
 
@@ -23,6 +24,7 @@ export const Fields = () => {
 
     <section >
       <div id="FieldsSearchSection" >
+        <PublicNavigation/>
         <Container>
           <br />
           <Row>
