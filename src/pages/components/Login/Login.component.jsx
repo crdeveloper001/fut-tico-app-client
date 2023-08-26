@@ -59,24 +59,21 @@ export const Login = () => {
     }
   };
   /**THIS METHOD AUTENTICATE THE USER CREDENTIALS AND RETURN A RESPONSE AND STORED INSIDE THE STATE AND LS */
-  const AuthenticateUserCredentials = async () => {
+  const AuthenticateUserCredentials = async (event) => {
+    event.preventDefault();
     localStorage.clear();
     const apiResponse = await serviceAPI.AuthorizeProfile(userCredentials);
     SetUserPayload(apiResponse.data);
-
+    localStorage.setItem("payload", JSON.stringify(apiResponse.data))
 
     switch (payloadUser.userRol) {
       case "Client":
-        localStorage.setItem("payload", JSON.stringify(apiResponse.data))
         alert("Client")
         navigationApp('/Client-Dashboard');
-        this.forceUpdate();
         break;
       case "Administrator":
-        localStorage.setItem("payload", JSON.stringify(apiResponse.data))
         alert("Administrator")
         navigationApp('/Admin-Dashboard');
-        this.forceUpdate();
         break;
 
     }
@@ -86,7 +83,7 @@ export const Login = () => {
 
   return (
     <section id="SectionLoginUser">
-      <PublicNavigation/>
+      <PublicNavigation />
       <Container id="ContainerLogin">
 
         <Card className="LoginCardSection mt-5">
@@ -134,9 +131,9 @@ export const Login = () => {
                   className="mt-3"
                   disabled={buttonOnOff}
                   variant="secondary"
-                  type="button"
-                  onClick={() => {
-                    AuthenticateUserCredentials()
+                  type="submit"
+                  onClick={(e) => {
+                    AuthenticateUserCredentials(e)
                   }}
                 >
                   Iniciar Sesion

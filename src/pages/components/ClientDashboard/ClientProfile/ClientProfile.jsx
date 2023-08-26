@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import React from 'react'
 import { Button, Card, Container, Form, Stack } from 'react-bootstrap';
 import { ClientNavigation } from '../ClientNavigation/ClientNavigation';
-import { GeneralMenuClient } from '../GeneralMenuClient/GeneralMenuClient';
 
 export const ClientProfile = () => {
   const [profileInfo, SetProfileInfo] = useState({});
@@ -44,7 +43,7 @@ export const ClientProfile = () => {
 
   return (
     <section>
-     <GeneralMenuClient/>
+      <ClientNavigation/>
       <Container>
         <hr />
 
