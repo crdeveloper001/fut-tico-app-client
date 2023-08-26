@@ -7,7 +7,6 @@ export const AdminDashboard = () => {
   return (
     <div>
 
-      <AdminNavigation/>
       <AdminProfile/>
     </div>
   )
