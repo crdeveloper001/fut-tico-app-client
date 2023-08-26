@@ -48,17 +48,17 @@ export const AdminNavigation = () => {
                             </Nav.Link>
                         </div>
                         <div className="p-2">
-                            <Nav.Link href="/Admin-Reservation">
+                            <Nav.Link href="/Admin-CurrentFields">
                                 <h5 className="text-center">FIELDS</h5>
                             </Nav.Link>
                         </div>
                         <div className="p-2">
-                            <Nav.Link href="/Admin-Reservation">
+                            <Nav.Link href="/Admin-CurrentReservations">
                                 <h5 className="text-center">RESERVATIONS</h5>
                             </Nav.Link>
                         </div>
                         <div className="p-2">
-                            <Nav.Link href="/Admin-Tournaments">
+                            <Nav.Link href="/Admin-CurrentTournaments">
                                 <h5 className="text-center">TOURNAMENTS</h5>
                             </Nav.Link>
                         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Form, Card, Stack, Button } from "react-bootstrap";
+import {AdminNavigation} from '../AdminNavigation/AdminNavigation';
 
 export const AdminProfile = (payload) => {
   const [profileInfo, SetProfileInfo] = useState({});
@@ -40,6 +41,7 @@ export const AdminProfile = (payload) => {
 
   return (
     <section>
+      <AdminNavigation/>
       <Container>
         <hr />
 
