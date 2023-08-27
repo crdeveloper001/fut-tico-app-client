@@ -1,8 +1,10 @@
+// eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import { Container, Form, Card, Stack, Button } from "react-bootstrap";
 import {AdminNavigation} from '../AdminNavigation/AdminNavigation';
 
-export const AdminProfile = (payload) => {
+export const AdminProfile = () => {
+  // eslint-disable-next-line no-unused-vars
   const [profileInfo, SetProfileInfo] = useState({});
   const [enableFields, SetEnableFields] = useState(false);
 

@@ -1,10 +1,11 @@
 // eslint-disable-next-line no-unused-vars
-import { useEffect, useState } from 'react';
 import React from 'react'
+import { useEffect, useState } from 'react';
 import { Button, Card, Container, Form, Stack } from 'react-bootstrap';
 import { ClientNavigation } from '../ClientNavigation/ClientNavigation';
 
 export const ClientProfile = () => {
+  // eslint-disable-next-line no-unused-vars
   const [profileInfo, SetProfileInfo] = useState({});
   const [enableFields, SetEnableFields] = useState(false);
 

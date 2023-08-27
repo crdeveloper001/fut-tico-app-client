@@ -6,25 +6,39 @@ import './Fields.css'
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 export const Fields = () => {
 
-  const [fields, setFields] = useState([]);
+  const [fields, setFields] = useState({});
 
   const LoadFieldInfo = async () => {
-    serviceAPI.GetAllFields().then(response => {
-      setFields(response)
-     
+    serviceAPI.GetAllFields().then(apiResponse => {
+      setFields(apiResponse)
     })
   }
+  const FilterByLocation = async (event) => {
+    const response = await serviceAPI.SearchByLocation(event.target.value).then(apiResponse => {
+      setFields(apiResponse)
+      console.log(fields);
+    });
 
-  useEffect(() => {
-    LoadFieldInfo()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    console.log("componente", response);
 
+  }
+  const FilterByGameType = async (event) => {
+    const response = await serviceAPI.SearchByGameType(event.target.value).then(apiResponse => {
+      setFields(apiResponse)
+      console.log(fields);
+    });
+    console.log("componente", response);
+  }
+
+  useEffect(() =>{
+    LoadFieldInfo();
+  },[])
   return (
-
+   
     <section >
       <div id="FieldsSearchSection" >
-        <PublicNavigation/>
+       
+        <PublicNavigation />
         <Container>
           <br />
           <Row>
@@ -43,7 +57,11 @@ export const Fields = () => {
               <Form>
                 <Form.Group>
                   <Form.Label className="text-white">Categoria de Juego</Form.Label>
-                  <Form.Select>
+                  <Form.Select onClick={(e) => {
+
+
+                    FilterByGameType(e);
+                  }}>
                     <option value="Todas">Todas</option>
                     <option>Futbol 5</option>
                     <option>Futbol 7</option>
@@ -58,7 +76,9 @@ export const Fields = () => {
               <Form>
                 <Form.Group>
                   <Form.Label className="text-white">Localizacion</Form.Label>
-                  <Form.Select>
+                  <Form.Select onClick={(e) => {
+                    FilterByLocation(e);
+                  }}>
                     <option>San Jose</option>
                     <option>Alajuela</option>
                     <option>Cartago</option>
@@ -75,29 +95,37 @@ export const Fields = () => {
           <br />
           <Row>
             <hr />
-            {fields.map((item) => (
-              <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
-                <Card>
+            <hr />
+            {fields.length > 0 ? (
+              fields.map((item) => (
+                <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
+                  <Card>
 
-                  <Card.Img variant="top" src={item.fieldPhotoURL} />
+                    <Card.Img variant="top" src={item.fieldPhotoURL} />
 
-                  <Card.Body>
-                    <Card.Title>{item.fieldName}</Card.Title>
-                    <Row>
-                      <Col>
+                    <Card.Body>
+                      <Card.Title>{item.fieldName}</Card.Title>
+                      <Row>
+                        <Col>
 
-                      <Card.Text>{item.fieldDescription}</Card.Text>
+                          <Card.Text>{item.fieldDescription}</Card.Text>
 
-                        <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
-                          Localizacion
-                        </Button>
-                      </Col>
-                     
-                    </Row>
-                  </Card.Body>
-                </Card>
+                          <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
+                            Localizacion
+                          </Button>
+                        </Col>
+
+                      </Row>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              ))
+            ) : (
+              <Col xs={12} className="text-center">
+                No fields to display.
               </Col>
-            ))}
+            )}
+
           </Row>
         </Container>
       </div>

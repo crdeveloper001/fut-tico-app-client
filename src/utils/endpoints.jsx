@@ -1,6 +1,6 @@
 //API BASE ENDPOINTS
-//export const BASE_URL = 'http://localhost:8080';
-export const BASE_URL = "https://app-a51f3f31-e875-43b6-b74d-ef19d9045215.cleverapps.io";
+export const BASE_URL = 'http://localhost:8080';
+//export const BASE_URL = "https://app-a51f3f31-e875-43b6-b74d-ef19d9045215.cleverapps.io";
 
 //AUTHENTICATION
 export const api_Authentication = "/api/v1/Authorization/AuthenticateProfile"
@@ -11,6 +11,7 @@ export const api_FieldsGetAllFields = "/api/v1/Fields/GetAllField";
 export const api_FieldsUpdateField = "/api/v1/Fields/UpdateField";
 export const api_FieldsNewField = "/api/v1/Fields/NewField";
 export const api_FieldsSearchByLocation = "/api/v1/Fields/SearchByLocation/";
+export const api_FieldsSearchByGameType = "/api/v1/Fields/SearchByGameType/";
 
 //RESERVARTIONS
 export const api_ReservationsGetAllReservation = "/api/v1/Reservations/GetAllReservations";

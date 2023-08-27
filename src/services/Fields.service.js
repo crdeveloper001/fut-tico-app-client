@@ -7,6 +7,7 @@ import {
     api_FieldsUpdateField,
     api_FieldsGetAllFields,
     api_FieldsSearchByLocation,
+    api_FieldsSearchByGameType,
 } from "../utils/endpoints";
 
 
@@ -27,9 +28,22 @@ async function SearchByLocation(location) {
         method: "GET",
         url: BASE_URL + api_FieldsSearchByLocation + location
     }).then((apiResponse) => {
-        return console.log(JSON.stringify(apiResponse));
+        console.log("api location", apiResponse.data);
+        return apiResponse.data
     }).catch((error) => {
-        return console.log(JSON.stringify(error));
+        return "OCURRIO UN ERROR AL OBTENER LA INFORMACION DE CANCHAS" + "\n" + JSON.stringify(error);
+    })
+}
+async function SearchByGameType(gameType) {
+    await axios({
+        method: "GET",
+        url: BASE_URL + api_FieldsSearchByGameType + gameType
+    }).then((apiResponse) => {
+
+        console.log("api game", apiResponse.data);
+        return apiResponse.data
+    }).catch((error) => {
+        return "OCURRIO UN ERROR AL OBTENER LA INFORMACION DE CANCHAS" + "\n" + JSON.stringify(error);
     })
 }
 
@@ -96,6 +110,7 @@ async function DeleteField(idField) {
 export default {
     GetAllFields,
     SearchByLocation,
+    SearchByGameType,
     NewField,
     UpdateField,
     DeleteField
