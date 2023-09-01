@@ -59,27 +59,33 @@ export const Login = () => {
     }
   };
   /**THIS METHOD AUTENTICATE THE USER CREDENTIALS AND RETURN A RESPONSE AND STORED INSIDE THE STATE AND LS */
-  const AuthenticateUserCredentials = async (event) => {
-    event.preventDefault();
-    localStorage.clear();
-    const apiResponse = await serviceAPI.AuthorizeProfile(userCredentials);
-    SetUserPayload(apiResponse.data);
-    localStorage.setItem("payload", JSON.stringify(apiResponse.data))
-
-    switch (payloadUser.userRol) {
-      case "Client":
-        alert("Client")
-        navigationApp('/Client-Dashboard');
-        break;
-      case "Administrator":
-        alert("Administrator")
-        navigationApp('/Admin-Dashboard');
-        break;
-
+  const AuthenticateUserCredentials = async () => {
+    try {
+    
+      const response = await serviceAPI.AuthorizeProfile(userCredentials);
+      localStorage.setItem("payload", JSON.stringify(response.data));
+      switch (response.data.userRol) {
+        case "Client":
+          alert("Client");
+          navigationApp('/Client-Dashboard');
+          break;
+        case "Administrator":
+          alert("Administrator");
+          navigationApp('/Admin-Dashboard');
+          break;
+        
+        default:
+          alert("Unknown role");
+       
+      }    
+      return response;
+    } catch (error) {
+     
+      console.error("Error authenticating user:", error);
+     
     }
-
-    return apiResponse;
   };
+
 
   return (
     <section id="SectionLoginUser">
@@ -131,9 +137,9 @@ export const Login = () => {
                   className="mt-3"
                   disabled={buttonOnOff}
                   variant="secondary"
-                  type="submit"
-                  onClick={(e) => {
-                    AuthenticateUserCredentials(e)
+                  type="button"
+                  onClick={() => {
+                    AuthenticateUserCredentials()
                   }}
                 >
                   Iniciar Sesion

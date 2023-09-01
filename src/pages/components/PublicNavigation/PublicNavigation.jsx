@@ -28,10 +28,10 @@ export const PublicNavigation = () => {
                             id="basic-nav-dropdown"
                         >
                             <NavDropdown.Item href="#action/3.1">
-                                <Nav.Link to="/Home">test 1</Nav.Link>
+                                <Nav.Link to="/Home">Soporte Tecnico</Nav.Link>
                             </NavDropdown.Item>
                             <NavDropdown.Item href="#action/3.2">
-                                <Nav.Link to="/Home">test 2</Nav.Link>
+                                <Nav.Link to="/Home">Preguntas Frecuentes</Nav.Link>
                             </NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
