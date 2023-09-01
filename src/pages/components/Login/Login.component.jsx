@@ -7,7 +7,7 @@ import { Container, Card, Form, Button, FloatingLabel, Dropdown } from "react-bo
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 
 export const Login = () => {
-  const [payloadUser, SetUserPayload] = useState([]);
+ 
   const [buttonOnOff, SetButtonOnOff] = useState(true);
   const [errorValidator, SetErrorValidator] = useState({
     errorAccountName: "",
@@ -61,31 +61,33 @@ export const Login = () => {
   /**THIS METHOD AUTENTICATE THE USER CREDENTIALS AND RETURN A RESPONSE AND STORED INSIDE THE STATE AND LS */
   const AuthenticateUserCredentials = async () => {
     try {
-    
+
       const response = await serviceAPI.AuthorizeProfile(userCredentials);
       localStorage.setItem("payload", JSON.stringify(response.data));
+      const parse_payload = localStorage.getItem('payload')
+      const localPayload = JSON.parse(parse_payload);
       switch (response.data.userRol) {
         case "Client":
-          alert("Client");
+
+          alert('Bienvenido Cliente: ' + `${localPayload.userName}`);
           navigationApp('/Client-Dashboard');
           break;
         case "Administrator":
-          alert("Administrator");
+          alert('Bienvenido Administrador: ' + `${localPayload.userName}`);
           navigationApp('/Admin-Dashboard');
           break;
-        
+
         default:
           alert("Unknown role");
-       
-      }    
+
+      }
       return response;
     } catch (error) {
-     
+
       console.error("Error authenticating user:", error);
-     
+
     }
   };
-
 
   return (
     <section id="SectionLoginUser">
@@ -98,7 +100,7 @@ export const Login = () => {
           </Card.Header>
           <Card.Body>
             <Card.Text>
-              <Form >
+              <Form>
                 <Form.Group controlId="form-group-id">
                   <FloatingLabel
                     controlId="floatingInput"
