@@ -19,11 +19,12 @@ export const Fields = () => {
 
     if (event.target.value === "Todas") {
       LoadFieldInfo();
-      setErrorNotFound(false);
+      
     } else {
       const response = await serviceAPI.SearchByLocation(event.target.value).then(apiResponse => {
         setFields(apiResponse.data)
       });
+      setErrorNotFound(false);
     }
 
   }
@@ -36,7 +37,8 @@ export const Fields = () => {
       const response = await serviceAPI.SearchByGameType(event.target.value).then(apiResponse => {
         setFields(apiResponse.data)
       });
-      console.log("componente", response);
+     
+      setErrorNotFound(false);
     }
 
   }
@@ -55,8 +57,6 @@ export const Fields = () => {
     } catch (error) {
       console.log(error);
     }
-
-
 
   }
 
