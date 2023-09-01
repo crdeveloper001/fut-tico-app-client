@@ -7,6 +7,7 @@ import {
     api_FieldsUpdateField,
     api_FieldsGetAllFields,
     api_FieldsSearchByLocation,
+    api_FieldsSearchByName,
     api_FieldsSearchByGameType,
 } from "../utils/endpoints";
 
@@ -24,27 +25,42 @@ async function GetAllFields() {
 }
 
 async function SearchByLocation(location) {
-    await axios({
-        method: "GET",
-        url: BASE_URL + api_FieldsSearchByLocation + location
-    }).then((apiResponse) => {
-        console.log("api location", apiResponse.data);
-        return apiResponse.data
-    }).catch((error) => {
+
+    try {
+        const apiResponse = await axios({
+            method: "GET",
+            url: BASE_URL + api_FieldsSearchByLocation + location,
+        });
+        return apiResponse; // Return the data from the API response
+    } catch (error) {
         return "OCURRIO UN ERROR AL OBTENER LA INFORMACION DE CANCHAS" + "\n" + JSON.stringify(error);
-    })
+    }
+
 }
 async function SearchByGameType(gameType) {
-    await axios({
-        method: "GET",
-        url: BASE_URL + api_FieldsSearchByGameType + gameType
-    }).then((apiResponse) => {
-
-        console.log("api game", apiResponse.data);
-        return apiResponse.data
-    }).catch((error) => {
+    try {
+        const apiResponse = await axios({
+            method: "GET",
+            url: BASE_URL + api_FieldsSearchByGameType + gameType,
+        });
+        return apiResponse; // Return the data from the API response
+    } catch (error) {
         return "OCURRIO UN ERROR AL OBTENER LA INFORMACION DE CANCHAS" + "\n" + JSON.stringify(error);
-    })
+    }
+
+}
+async function SearchByGameName(fieldName) {
+    try {
+        const apiResponse = await axios({
+            method: "GET",
+            url: BASE_URL + api_FieldsSearchByName + fieldName,
+        });
+       
+        return apiResponse; // Return the data from the API response
+    } catch (error) {
+        return "OCURRIO UN ERROR AL OBTENER LA INFORMACION DE CANCHAS" + "\n" + JSON.stringify(error);
+    }
+
 }
 
 async function NewField(field) {
@@ -111,6 +127,7 @@ export default {
     GetAllFields,
     SearchByLocation,
     SearchByGameType,
+    SearchByGameName,
     NewField,
     UpdateField,
     DeleteField

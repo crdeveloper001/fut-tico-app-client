@@ -12,6 +12,7 @@ export const api_FieldsUpdateField = "/api/v1/Fields/UpdateField";
 export const api_FieldsNewField = "/api/v1/Fields/NewField";
 export const api_FieldsSearchByLocation = "/api/v1/Fields/SearchByLocation/";
 export const api_FieldsSearchByGameType = "/api/v1/Fields/SearchByGameType/";
+export const api_FieldsSearchByName = "/api/v1/Fields/SearchByName/";
 
 //RESERVARTIONS
 export const api_ReservationsGetAllReservation = "/api/v1/Reservations/GetAllReservations";

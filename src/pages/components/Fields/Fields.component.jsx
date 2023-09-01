@@ -1,12 +1,14 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState, } from "react";
-import { Col, Card, Container, Row, Form, Button } from "react-bootstrap";
+import { Col, Card, Container, Row, Form, Button, Alert } from "react-bootstrap";
 import serviceAPI from "../../../services/Fields.service";
 import './Fields.css'
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 export const Fields = () => {
 
-  const [fields, setFields] = useState({});
+  const [fields, setFields] = useState([]);
+  const [nameField, setNameField] = useState('');
+  const [errorNotFound, setErrorNotFound] = useState(false);
 
   const LoadFieldInfo = async () => {
     serviceAPI.GetAllFields().then(apiResponse => {
@@ -14,30 +16,59 @@ export const Fields = () => {
     })
   }
   const FilterByLocation = async (event) => {
-    const response = await serviceAPI.SearchByLocation(event.target.value).then(apiResponse => {
-      setFields(apiResponse)
-      console.log(fields);
-    });
 
-    console.log("componente", response);
+    if (event.target.value === "Todas") {
+      LoadFieldInfo();
+      setErrorNotFound(false);
+    } else {
+      const response = await serviceAPI.SearchByLocation(event.target.value).then(apiResponse => {
+        setFields(apiResponse.data)
+      });
+    }
 
   }
   const FilterByGameType = async (event) => {
-    const response = await serviceAPI.SearchByGameType(event.target.value).then(apiResponse => {
-      setFields(apiResponse)
-      console.log(fields);
-    });
-    console.log("componente", response);
+
+    if (event.target.value === "Todas") {
+      LoadFieldInfo();
+      setErrorNotFound(false);
+    } else {
+      const response = await serviceAPI.SearchByGameType(event.target.value).then(apiResponse => {
+        setFields(apiResponse.data)
+      });
+      console.log("componente", response);
+    }
+
   }
 
-  useEffect(() =>{
+  const FilterByName = async () => {
+    try {
+      const response = await serviceAPI.SearchByGameName(nameField).then(apiResponse => {
+        if (apiResponse.data == undefined) {
+          setErrorNotFound(true)
+        } else {
+          setErrorNotFound(false)
+          setFields(apiResponse.data)
+        }
+      });
+
+    } catch (error) {
+      console.log(error);
+    }
+
+
+
+  }
+
+  useEffect(() => {
     LoadFieldInfo();
-  },[])
+
+  }, [])
   return (
-   
+
     <section >
       <div id="FieldsSearchSection" >
-       
+
         <PublicNavigation />
         <Container>
           <br />
@@ -46,9 +77,17 @@ export const Fields = () => {
               <Form>
                 <Form.Group>
                   <Form.Label className="text-white">Nombre de la cancha</Form.Label>
-                  <Form.Control type="search" placeholder="nombre" />
+                  <Form.Control type="search" placeholder="nombre" id="SearchFieldBox" onInput={(e) => {
+                    if (e.target.value === "") {
+                      LoadFieldInfo();
+                    } else {
+                      setNameField(e.target.value)
+                    }
+
+                  }} />
                   <br />
-                  <Button variant="success" title="Buscar" onClick={() => { LoadFieldInfo() }}>Buscar</Button>
+                  <Button variant="success" title="Buscar" onClick={() => { FilterByName() }}>Buscar</Button>
+
                 </Form.Group>
               </Form>
 
@@ -79,6 +118,7 @@ export const Fields = () => {
                   <Form.Select onClick={(e) => {
                     FilterByLocation(e);
                   }}>
+                    <option>Todas</option>
                     <option>San Jose</option>
                     <option>Alajuela</option>
                     <option>Cartago</option>
@@ -92,39 +132,37 @@ export const Fields = () => {
 
             </Col>
           </Row>
+          {errorNotFound ? <Alert className="mt-3" variant="danger" title="No results found in the search">NO SE ENCONTRO LA CANCHA! INTENTA DE NUEVO</Alert> : ""}
+
           <br />
+
           <Row>
             <hr />
             <hr />
-            {fields.length > 0 ? (
-              fields.map((item) => (
-                <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
-                  <Card>
 
-                    <Card.Img variant="top" src={item.fieldPhotoURL} />
+            {fields.map((item) => (
+              <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
+                <Card>
 
-                    <Card.Body>
-                      <Card.Title>{item.fieldName}</Card.Title>
-                      <Row>
-                        <Col>
+                  <Card.Img variant="top" src={item.fieldPhotoURL} />
 
-                          <Card.Text>{item.fieldDescription}</Card.Text>
+                  <Card.Body>
+                    <Card.Title>{item.fieldName}</Card.Title>
+                    <Row>
+                      <Col>
 
-                          <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
-                            Localizacion
-                          </Button>
-                        </Col>
+                        <Card.Text>{item.fieldDescription}</Card.Text>
 
-                      </Row>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              ))
-            ) : (
-              <Col xs={12} className="text-center">
-                No fields to display.
+                        <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
+                          Localizacion
+                        </Button>
+                      </Col>
+
+                    </Row>
+                  </Card.Body>
+                </Card>
               </Col>
-            )}
+            ))}
 
           </Row>
         </Container>
