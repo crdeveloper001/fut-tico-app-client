@@ -15,7 +15,7 @@ export const AdminNavigation = () => {
         const currentPayload = JSON.parse(Payload);
         currentPayload.userRol = null
 
-        this.forceUpdate()
+        
     }
 
     return (

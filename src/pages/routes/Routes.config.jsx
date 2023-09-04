@@ -12,6 +12,7 @@ import { ClientProfile } from '../components/ClientDashboard/ClientProfile/Clien
 import { CurrentFields } from '../components/AdminDashboard/CurrentFields/CurrentFields'
 import { AdminProfile } from '../components/AdminDashboard/Profile/AdminProfile'
 import { ClientTournaments } from '../components/ClientDashboard/ClientTournaments/ClientTournaments'
+import { ViewFieldDetails } from '../components/Fields/ViewFieldDetails/ViewFieldDetails'
 
 export const RoutesConfig = () => {
   return (
@@ -20,6 +21,7 @@ export const RoutesConfig = () => {
         <Route path='/' element={<Dashboard />} />
         <Route path='/Home' element={<Dashboard />} />
         <Route path='/SearchField' element={<Fields />} />
+        <Route path='/ViewFieldDetails' element={<ViewFieldDetails/>} />
         <Route path='/Login' element={<Login />} />
         <Route path='/Register' element={<Register />} />
         <Route path='/Admin-Dashboard' element={<AdminDashboard />} />

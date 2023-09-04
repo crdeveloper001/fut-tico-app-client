@@ -11,11 +11,12 @@ export const ClientNavigation = () => {
 
   const changePayloadRol = () =>{
       localStorage.clear()
+      
       const Payload = localStorage.getItem('payload')
       const currentPayload = JSON.parse(Payload);
       currentPayload.userRol = null
 
-      this.forceUpdate()
+     
   }
   
   return (

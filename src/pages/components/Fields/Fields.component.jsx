@@ -153,6 +153,10 @@ export const Fields = () => {
 
                         <Card.Text>{item.fieldDescription}</Card.Text>
 
+                        <Button variant="danger" size="sm" onClick={() => console.log(item)}>
+                          Danger
+                        </Button>
+
                         <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
                           Localizacion
                         </Button>
