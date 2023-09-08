@@ -1,38 +1,54 @@
-import React from 'react'
-import { Card, ListGroup,ListGroupItem } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+// eslint-disable-next-line no-unused-vars
+
+import React, { useEffect, useState } from 'react'
+import { Card, ListGroup, ListGroupItem, Button, Container } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 import { PublicNavigation } from '../../PublicNavigation/PublicNavigation';
+import './ViewFieldsDetails.css';
+export const ViewFieldDetails = () => {
+    const { state } = useLocation();
+    const [fieldDetails, setFieldDetails] = useState({});
 
-export const ViewFieldDetails = (details) => {
-   
+    useEffect(() => {
+        setFieldDetails(state)
 
+    })
 
-  return (
-    <div>
-  <PublicNavigation />
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="https://placeimg.com/300/120/any" />
-            <Card.Header>Header</Card.Header>
-            <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Subtitle>Card Subtitle</Card.Subtitle>
-                <Card.Text>
-                    Some quick example text to build on the card title and make up the bulk of
-                    the card's content.
-                </Card.Text>
-            </Card.Body>
-            <ListGroup flush>
-                <ListGroupItem>Cras justo odio</ListGroupItem>
-                <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-                <ListGroupItem>Vestibulum at eros</ListGroupItem>
-            </ListGroup>
-            <Card.Body>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
-            </Card.Body>
-        </Card>
+    return (
+        <div>
+            <PublicNavigation />
+
+            <Container fluid>
+                <Card className='mt-3'>
 
 
-    </div>
-  )
+                    <Container>
+                        <Card.Img className='imgField img-fluid' variant="top" src={fieldDetails.details?.fieldPhotoURL} />
+                    </Container>
+
+                    <Card.Body>
+                        <Card.Title>  {fieldDetails.details?.fieldName}</Card.Title>
+                        <p>Descripcion: {fieldDetails.details?.fieldDescription}</p>
+                        <ListGroup flush>
+                            <ListGroupItem>Telefono: {fieldDetails.details?.fieldPhone}</ListGroupItem>
+                            <ListGroupItem>Disponibilidad: {fieldDetails.details?.fieldAvailable ? "Si" : "No"}</ListGroupItem>
+                            <ListGroupItem>Tipo de Juego: {fieldDetails.details?.fieldGameType}</ListGroupItem>
+                            <ListGroupItem>Localizacion: {fieldDetails.details?.fieldLocation}</ListGroupItem>
+                        </ListGroup>
+
+                        <Button className='mt-3' variant="success" onClick={() => console.log("Reservar Ahora")}>
+                            Reservar Ahora
+                        </Button>
+                    </Card.Body>
+
+
+                </Card>
+            </Container>
+
+
+
+
+        </div>
+    )
 }

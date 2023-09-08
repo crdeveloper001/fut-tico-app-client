@@ -1,25 +1,36 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState, } from "react";
 import { Col, Card, Container, Row, Form, Button, Alert } from "react-bootstrap";
 import serviceAPI from "../../../services/Fields.service";
 import './Fields.css'
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
+import { useNavigate } from "react-router-dom";
+
 export const Fields = () => {
 
+  const navigationApp = useNavigate();
   const [fields, setFields] = useState([]);
   const [nameField, setNameField] = useState('');
   const [errorNotFound, setErrorNotFound] = useState(false);
+  const [fieldDetails, setFieldDetails] = useState({})
 
   const LoadFieldInfo = async () => {
     serviceAPI.GetAllFields().then(apiResponse => {
       setFields(apiResponse)
     })
   }
+
+  const LoadFieldDetails = async (details) => {
+    
+   
+    navigationApp('/ViewFieldDetails', { state: { details } })
+  }
   const FilterByLocation = async (event) => {
 
     if (event.target.value === "Todas") {
       LoadFieldInfo();
-      
+
     } else {
       const response = await serviceAPI.SearchByLocation(event.target.value).then(apiResponse => {
         setFields(apiResponse.data)
@@ -37,7 +48,7 @@ export const Fields = () => {
       const response = await serviceAPI.SearchByGameType(event.target.value).then(apiResponse => {
         setFields(apiResponse.data)
       });
-     
+
       setErrorNotFound(false);
     }
 
@@ -67,11 +78,13 @@ export const Fields = () => {
   return (
 
     <section >
+
       <div id="FieldsSearchSection" >
 
         <PublicNavigation />
+
+
         <Container>
-          <br />
           <Row>
             <Col md={3}>
               <Form>
@@ -132,13 +145,15 @@ export const Fields = () => {
 
             </Col>
           </Row>
+          <br />
+
           {errorNotFound ? <Alert className="mt-3" variant="danger" title="No results found in the search">NO SE ENCONTRO LA CANCHA! INTENTA DE NUEVO</Alert> : ""}
 
           <br />
 
           <Row>
             <hr />
-            <hr />
+
 
             {fields.map((item) => (
               <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
@@ -153,8 +168,13 @@ export const Fields = () => {
 
                         <Card.Text>{item.fieldDescription}</Card.Text>
 
-                        <Button variant="danger" size="sm" onClick={() => console.log(item)}>
-                          Danger
+                        <Button variant="danger" size="sm" onClick={() => {
+                          setFieldDetails(item);
+                          console.log("state button:", fieldDetails);
+                          LoadFieldDetails(item)
+
+                        }}>
+                          Ver Detalles
                         </Button>
 
                         <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
@@ -169,6 +189,8 @@ export const Fields = () => {
             ))}
 
           </Row>
+
+
         </Container>
       </div>
 
