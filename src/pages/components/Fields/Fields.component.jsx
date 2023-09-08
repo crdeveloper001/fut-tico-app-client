@@ -166,7 +166,7 @@ export const Fields = () => {
                     <Row>
                       <Col>
 
-                        <Card.Text>{item.fieldDescription}</Card.Text>
+                      
 
                         <Button variant="danger" size="sm" onClick={() => {
                           setFieldDetails(item);
