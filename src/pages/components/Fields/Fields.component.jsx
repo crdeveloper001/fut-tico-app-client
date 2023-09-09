@@ -159,7 +159,7 @@ export const Fields = () => {
               <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
                 <Card>
 
-                  <Card.Img variant="top" src={item.fieldPhotoURL} />
+                  <Card.Img className="img-fluid" variant="top" src={item.fieldPhotoURL} />
 
                   <Card.Body>
                     <Card.Title>{item.fieldName}</Card.Title>
