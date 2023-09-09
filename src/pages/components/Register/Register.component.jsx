@@ -26,6 +26,21 @@ export const Register = () => {
     errorAccountPassword: "",
   });
 
+  const ClearFieldAfterRegister = () => {
+    let field1 = document.getElementById("InputUserName");
+    let field2 = document.getElementById("InputUserLastName");
+    let field3 = document.getElementById("InputUserPhone");
+    let field4 = document.getElementById("InputUserEmail");
+    let field5 = document.getElementById("InputUserFirstPassword");
+    let field6 = document.getElementById("InputViewUserAccount");
+    field1.value = "";
+    field2.value = "";
+    field3.value = "";
+    field4.value = "";
+    field5.value = "";
+    field6.value = "";
+  }
+
   const SendDataToAPI = async () => {
 
     const response = await serviceAPI.RegisterNewUser(userProfile);
@@ -34,11 +49,11 @@ export const Register = () => {
       case "REGISTERED":
         setAlertRegister(true)
         setTimeout(() => {
-
+          ClearFieldAfterRegister();
           setAlertRegister(false)
         }, 10000);
 
-      
+
         break;
 
       default:
@@ -210,7 +225,7 @@ export const Register = () => {
               type="text"
               value={userProfile.userAccount}
               readOnly={true}
-              id="InputUserEmail"
+              id="InputViewUserAccount"
             />
 
             <br />
@@ -230,13 +245,14 @@ export const Register = () => {
             <hr />
             <Button variant="success" type="button" disabled={button_on_off} onClick={() => {
               SendDataToAPI();
+             
             }}>
               Crear Cuenta
             </Button>
           </Form.Group>
         </Form>
 
-       {alertRegister ?  <Alert variant="info" className="mt-3">
+        {alertRegister ? <Alert variant="info" className="mt-3">
           <Alert.Heading>REGISTRO COMPLETO</Alert.Heading>
           <ListGroup>
             <ListGroup.Item>TU CUENTA HA SIDO CREADA, INGRESA CON EL USUARIO: {userProfile.userAccount}</ListGroup.Item>
