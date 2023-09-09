@@ -20,8 +20,8 @@ async function GetAllCurrentUsers() {
     .catch((error) => {
       return console.log(
         "OCURRIO UN ERROR AL OBTENER LA INFO DE LOS USUARIOS" +
-          "\n" +
-          JSON.stringify(error)
+        "\n" +
+        JSON.stringify(error)
       );
     });
 }
@@ -40,38 +40,35 @@ async function SearchbyRolType(rolName) {
 }
 /** */
 async function RegisterNewUser(userProfileData) {
-  console.log(userProfileData);
+  try {
+    console.log(userProfileData);
 
-  if (userProfileData != null) {
-    axios({
-      url: BASE_URL + api_UsersNewUserProfile,
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    if (userProfileData != null) {
+      const apiResponse = await axios({
+        url: BASE_URL + api_UsersNewUserProfile,
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      data: {
-        id: "",
-        userName: userProfileData.userName,
-        userLastName: userProfileData.userLastName,
-        userPhone: userProfileData.userPhone,
-        userEmail: userProfileData.userEmail,
-        userAccount: userProfileData.userAccount,
-        userAccountPassword: userProfileData.userAccountPassword,
-        userRol: userProfileData.userRol,
-        userActive: userProfileData.userActive,
-      },
-    })
-      .then((apiResponse) => {
-        console.log(JSON.stringify(apiResponse));
-
-        return apiResponse;
+        data: {
+          id: "",
+          userName: userProfileData.userName,
+          userLastName: userProfileData.userLastName,
+          userPhone: userProfileData.userPhone,
+          userEmail: userProfileData.userEmail,
+          userAccount: userProfileData.userAccount,
+          userAccountPassword: userProfileData.userAccountPassword,
+          userRol: userProfileData.userRol,
+          userActive: userProfileData.userActive,
+        },
       })
-      .catch((error) => {
-        console.log(JSON.stringify(error));
 
-        return error;
-      });
+      return apiResponse;
+    }
+  } catch (error) {
+    console.error('Error:', error.response.data);
+    throw error; // Re-throw the error to be caught by the caller
   }
 }
 

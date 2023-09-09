@@ -1,11 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Alert, ListGroup } from "react-bootstrap";
 import serviceAPI from "../../../services/Users.service";
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 
 export const Register = () => {
   const [button_on_off, SetButtonOnOff] = useState(true);
+  const [alertRegister, setAlertRegister] = useState(false);
   const [userProfile, SetUserProfile] = useState({
     id: "",
     userName: "",
@@ -25,16 +26,29 @@ export const Register = () => {
     errorAccountPassword: "",
   });
 
-  const SendDataToAPI = () => {
-    serviceAPI
-      .RegisterNewUser(userProfile)
-      .then((result) => {
-        console.log(JSON.stringify(result));
-      })
-      .catch((error) => {
-        console.log(JSON.stringify(error));
-      });
+  const SendDataToAPI = async () => {
+
+    const response = await serviceAPI.RegisterNewUser(userProfile);
+
+    switch (response.data) {
+      case "REGISTERED":
+        setAlertRegister(true)
+        setTimeout(() => {
+
+          setAlertRegister(false)
+        }, 10000);
+
+      
+        break;
+
+      default:
+        setAlertRegister(false)
+        break;
+    }
+
   };
+
+
 
   const validateName = (e) => {
     let value = e.target.value;
@@ -221,6 +235,13 @@ export const Register = () => {
             </Button>
           </Form.Group>
         </Form>
+
+       {alertRegister ?  <Alert variant="info" className="mt-3">
+          <Alert.Heading>REGISTRO COMPLETO</Alert.Heading>
+          <ListGroup>
+            <ListGroup.Item>TU CUENTA HA SIDO CREADA, INGRESA CON EL USUARIO: {userProfile.userAccount}</ListGroup.Item>
+          </ListGroup>
+        </Alert> : ""}
       </Container>
     </section>
   );

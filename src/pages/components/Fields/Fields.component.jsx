@@ -22,8 +22,8 @@ export const Fields = () => {
   }
 
   const LoadFieldDetails = async (details) => {
-    
-   
+
+
     navigationApp('/ViewFieldDetails', { state: { details } })
   }
   const FilterByLocation = async (event) => {
@@ -166,7 +166,7 @@ export const Fields = () => {
                     <Row>
                       <Col>
 
-                      
+
 
                         <Button variant="danger" size="sm" onClick={() => {
                           setFieldDetails(item);
