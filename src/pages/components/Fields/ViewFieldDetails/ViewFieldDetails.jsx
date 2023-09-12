@@ -3,12 +3,28 @@
 
 import React, { useEffect, useState } from 'react'
 import { Card, ListGroup, ListGroupItem, Button, Container } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { PublicNavigation } from '../../PublicNavigation/PublicNavigation';
 import './ViewFieldsDetails.css';
 export const ViewFieldDetails = () => {
     const { state } = useLocation();
     const [fieldDetails, setFieldDetails] = useState({});
+    const navApp = useNavigate();
+
+    const ReserveNow = (fieldSelected) => {
+
+        const currentSession = JSON.parse(localStorage.getItem('payload'))
+
+        if (currentSession === undefined || null) {
+
+            navApp('/Login',{state:{fieldSelected}});
+        }else if(currentSession.userJwt === "AUTHORIZE"){
+
+        }
+
+
+        
+    }
 
     useEffect(() => {
         setFieldDetails(state)

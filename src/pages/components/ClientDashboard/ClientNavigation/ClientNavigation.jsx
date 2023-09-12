@@ -28,8 +28,10 @@ export const ClientNavigation = () => {
                   <Navbar.Collapse id="basic-navbar-nav">
                       <Nav className="me-auto">
 
-                          <Nav.Link onClick={handleShow}>Menu Cliente</Nav.Link>
-                          <Nav.Link href="/home" onClick={() =>{changePayloadRol()}}>Log Out</Nav.Link>
+                          <Nav.Link onClick={handleShow}>Menu</Nav.Link>
+                         
+                          
+                          <Nav.Link href="/home" onClick={() =>{changePayloadRol()}}>Salir </Nav.Link>
 
 
                       </Nav>

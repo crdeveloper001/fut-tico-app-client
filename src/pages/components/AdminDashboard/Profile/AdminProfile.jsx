@@ -1,12 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
 import { Container, Form, Card, Stack, Button } from "react-bootstrap";
-import {AdminNavigation} from '../AdminNavigation/AdminNavigation';
+import { AdminNavigation } from '../AdminNavigation/AdminNavigation';
 
 export const AdminProfile = () => {
   // eslint-disable-next-line no-unused-vars
   const [profileInfo, SetProfileInfo] = useState({});
-  const [enableFields, SetEnableFields] = useState(false);
+  const [enableFields, SetEnableFields] = useState(true);
 
   const EditProfileTrue = () => {
     const enable = enableFields;
@@ -25,25 +25,15 @@ export const AdminProfile = () => {
     }
   };
 
-  const payloadMock = [
-    {
-      userName: "test",
-      userLastName: "test",
-      userPhone: 12341234,
-      userEmail: "test@gmail.com",
-      userAccount: "test",
-      userAccountPassword: "testpassword",
-      userRol: "Admin",
-      userActive: true,
-    },
-  ];
   useEffect(() => {
-    SetProfileInfo(payloadMock);
+    const sessionPayload = JSON.parse(localStorage.getItem('payload'))
+    console.log("here", sessionPayload.id);
+    SetProfileInfo(sessionPayload);
   }, []);
 
   return (
     <section>
-      <AdminNavigation/>
+      <AdminNavigation />
       <Container>
         <hr />
 
@@ -78,44 +68,44 @@ export const AdminProfile = () => {
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label>NAME</Form.Label>
-                  <Form.Control type="text" disabled={enableFields} />
+                  <Form.Control type="text" disabled={enableFields} value={profileInfo.userName} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label>LAST NAME</Form.Label>
-                  <Form.Control type="text" disabled={enableFields} />
+                  <Form.Control type="text" disabled={enableFields} value={profileInfo.userLastName} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label>PHONE</Form.Label>
-                  <Form.Control type="tel" disabled={enableFields} />
+                  <Form.Control type="tel" disabled={enableFields} value={profileInfo.userPhone} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label>EMAIL ADDRESS</Form.Label>
-                  <Form.Control type="email" disabled={enableFields} />
+                  <Form.Control type="email" disabled={enableFields} value={profileInfo.userEmail} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label>ACCOUNT</Form.Label>
-                  <Form.Control type="text" disabled={enableFields} />
+                  <Form.Control type="text" disabled={enableFields} value={profileInfo.userAccount} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
                   <Form.Label>ROL</Form.Label>
-                  <Form.Control type="text" disabled={enableFields} />
+                  <Form.Control type="text" disabled={enableFields} value={profileInfo.userRol} />
                 </Form.Group>
-               
+
                 <Button type="submit" variant="success">
                   Save
                 </Button>
