@@ -1,9 +1,9 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
 import { useEffect, useState } from 'react';
-import { Button, Card, Container, Form, Stack } from 'react-bootstrap';
+import { Button, Card, Container, Form } from 'react-bootstrap';
 import { ClientNavigation } from '../ClientNavigation/ClientNavigation';
-
+import './ClientProfile.css'
 export const ClientProfile = () => {
   // eslint-disable-next-line no-unused-vars
   const [profileInfo, SetProfileInfo] = useState({});
@@ -39,28 +39,21 @@ export const ClientProfile = () => {
         <hr />
 
         <Card>
-          <Card.Header>PERFIL </Card.Header>
+          <Card.Header className="textWelcome">Welcome back! {profileInfo.userName}</Card.Header>
           <Card.Body>
             <Card.Text>
-              <Stack direction="horizontal" gap={3}>
-                <div className="bg-light border">
-                  <Button
-                    variant="warning"
-                    onClick={() => {
-                      EditProfileTrue();
-                    }}
-                  >
-                    EDITAR INFORMACION PERSONAL
-                  </Button>
-                </div>
-                <div className="bg-light border ms-auto">
-                  <Button variant="success">CAMBIAR CONTRASEÑA</Button>
-                </div>
-                <div className="vr" />
-                <div className="bg-light border">
-                  <Button variant="danger">ELIMINAR MI CUENTA</Button>
-                </div>
-              </Stack>
+              <Button className="mb-3 "
+                variant="warning"
+                onClick={() => {
+                  EditProfileTrue();
+                }}
+              >
+                EDITAR INFORMACION GENERAL
+              </Button>
+              <Button className="mb-3 d-flex justify-content-end" variant="success">CAMBIAR CONTRASEÑA</Button>
+              <Button className="mb-3 position-absolute bottom-0 end-0 m-3" variant="danger">ELIMINAR MI CUENTA</Button>
+
+              <hr />
               <hr />
 
               <Form>
@@ -106,7 +99,7 @@ export const ClientProfile = () => {
                   <Form.Label>TIPO</Form.Label>
                   <Form.Control type="text" disabled={true} value={profileInfo.userRol} />
                 </Form.Group>
-                    <hr />
+                <hr />
                 <Button type="submit" variant="success">
                   GUARDAR
                 </Button>

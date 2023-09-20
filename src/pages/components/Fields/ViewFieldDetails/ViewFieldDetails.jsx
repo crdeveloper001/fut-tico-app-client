@@ -13,18 +13,15 @@ export const ViewFieldDetails = () => {
     const [fieldDetails, setFieldDetails] = useState({});
     const navApp = useNavigate();
 
-    const ReserveNow = (fieldSelected) => {
+    const ReserveNow = () => {
 
-        const currentSession = JSON.parse(localStorage.getItem('payload'))
 
-        if (currentSession === undefined || null) {
-
-            navApp('/Login', { state: { fieldSelected } });
-        } else if (currentSession.userJwt === "AUTHORIZE") {
-
+        if (localStorage.getItem('payload') == undefined || null) {
+            alert("Redirecting to login");
+            navApp('/Login');
+        } else if (localStorage.getItem('payload') !== undefined || null) {
+            alert("Reservado para ti");
         }
-
-
 
     }
 
@@ -53,7 +50,7 @@ export const ViewFieldDetails = () => {
                             <ListGroupItem>Localizacion: {fieldDetails.details?.fieldLocation}</ListGroupItem>
                         </ListGroup>
 
-                        <Button className='mt-3' variant="success" onClick={() => console.log("Reservar Ahora")}>
+                        <Button className='mt-3' variant="success" onClick={() => ReserveNow()}>
                             Reservar Ahora
                         </Button>
                     </Card.Body>

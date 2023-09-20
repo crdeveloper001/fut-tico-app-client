@@ -1,8 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
-import { Container, Form, Card, Stack, Button } from "react-bootstrap";
+import { Container, Form, Card, Button } from "react-bootstrap";
 import { AdminNavigation } from '../AdminNavigation/AdminNavigation';
-
+import './AdminProfile.css';
 export const AdminProfile = () => {
   // eslint-disable-next-line no-unused-vars
   const [profileInfo, SetProfileInfo] = useState({});
@@ -29,38 +29,32 @@ export const AdminProfile = () => {
     const sessionPayload = JSON.parse(localStorage.getItem('payload'))
     console.log("here", sessionPayload.id);
     SetProfileInfo(sessionPayload);
+
+
   }, []);
 
   return (
     <section>
-      <AdminNavigation />
+      <AdminNavigation userName={JSON.stringify(profileInfo.userName)} />
       <Container>
         <hr />
 
         <Card>
-          <Card.Header>PERFIL </Card.Header>
+          <Card.Header className="textWelcome">Welcome back {profileInfo.userName}</Card.Header>
           <Card.Body>
             <Card.Text>
-              <Stack direction="horizontal" gap={3}>
-                <div className="bg-light border">
-                  <Button
-                    variant="warning"
-                    onClick={() => {
-                      EditProfileTrue();
-                    }}
-                  >
-                   EDITAR INFORMACION GENERAL
-                  </Button>
-                </div>
-                <div className="bg-light border ms-auto">
-                  <Button variant="success">CAMBIAR CONTRASEÑA</Button>
-                </div>
-                <div className="vr" />
-                <div className="bg-light border">
-                  <Button variant="danger">ELIMINAR MI CUENTA</Button>
-                </div>
-              </Stack>
-              <hr />
+              <Button className="mb-3 "
+                variant="warning"
+                onClick={() => {
+                  EditProfileTrue();
+                }}
+              >
+                EDITAR INFORMACION GENERAL
+              </Button>
+              <Button className="mb-3 d-flex justify-content-end" variant="success">CAMBIAR CONTRASEÑA</Button>
+              <Button className="mb-3 position-absolute bottom-0 end-0 m-3" variant="danger">ELIMINAR MI CUENTA</Button>
+
+
 
               <Form>
                 <Form.Group
@@ -105,7 +99,7 @@ export const AdminProfile = () => {
                   <Form.Label>TIPO</Form.Label>
                   <Form.Control type="text" disabled={enableFields} value={profileInfo.userRol} />
                 </Form.Group>
-                    <hr />
+                <hr />
                 <Button type="submit" variant="success">
                   GUARDAR
                 </Button>

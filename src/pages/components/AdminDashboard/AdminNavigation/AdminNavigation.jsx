@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container, Nav, Navbar, Offcanvas, Stack, Button } from 'react-bootstrap';
 
 export const AdminNavigation = () => {
@@ -7,7 +8,6 @@ export const AdminNavigation = () => {
     const [show, setShow] = useState(false)
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
 
     const changePayloadRol = () => {
         localStorage.clear()
@@ -21,6 +21,8 @@ export const AdminNavigation = () => {
     return (
         <section>
             <Navbar expand="lg" className="bg-body-tertiary ">
+
+
                 <Container fluid>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -29,8 +31,11 @@ export const AdminNavigation = () => {
                             <Nav.Link >
                                 <Button variant="primary" onClick={handleShow}>Menu</Button>
                             </Nav.Link>
+                            <Nav.Link eventKey="link-event-key" disabled={true}>
 
+                            </Nav.Link>
                         </Nav>
+
 
                         <Nav className="d-flex justify-content-end" activeKey="/link">
                             <Nav.Link href="/home" >
