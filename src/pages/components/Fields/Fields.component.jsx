@@ -15,7 +15,7 @@ export const Fields = () => {
   const [errorNotFound, setErrorNotFound] = useState(false);
   const [fieldDetails, setFieldDetails] = useState({})
 
-  const LoadFieldInfo = async () => {
+  const LoadFieldInfo = () => {
     serviceAPI.GetAllFields().then(apiResponse => {
       setFields(apiResponse)
     })
