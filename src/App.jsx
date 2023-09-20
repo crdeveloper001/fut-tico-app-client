@@ -4,6 +4,7 @@ import { Dashboard } from "./pages/components/Dashboard/Dashboard.component";
 import store from "./pages/store";
 import { SessionProvider } from "./hooks/SessionManager";
 import ReCAPTCHA from "react-google-recaptcha";
+import { GeneralFooter } from "./pages/components/GeneralFooter/GeneralFooter";
 function App() {
   const handleRecaptchaVerify = (response) => {
     // Handle reCAPTCHA verification here
@@ -20,6 +21,7 @@ function App() {
               onChange={handleRecaptchaVerify()}
             />
             <Dashboard />
+            
           </section>
         </Provider>
       </SessionProvider>

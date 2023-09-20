@@ -38,7 +38,7 @@ export const AdminProfile = () => {
         <hr />
 
         <Card>
-          <Card.Header>PROFILE </Card.Header>
+          <Card.Header>PERFIL </Card.Header>
           <Card.Body>
             <Card.Text>
               <Stack direction="horizontal" gap={3}>
@@ -49,15 +49,15 @@ export const AdminProfile = () => {
                       EditProfileTrue();
                     }}
                   >
-                    Edit General Information
+                   EDITAR INFORMACION GENERAL
                   </Button>
                 </div>
                 <div className="bg-light border ms-auto">
-                  <Button variant="success">Reset Password</Button>
+                  <Button variant="success">CAMBIAR CONTRASEÑA</Button>
                 </div>
                 <div className="vr" />
                 <div className="bg-light border">
-                  <Button variant="danger">Delete My Account</Button>
+                  <Button variant="danger">ELIMINAR MI CUENTA</Button>
                 </div>
               </Stack>
               <hr />
@@ -67,47 +67,47 @@ export const AdminProfile = () => {
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label>NAME</Form.Label>
+                  <Form.Label>NOMBRE</Form.Label>
                   <Form.Control type="text" disabled={enableFields} value={profileInfo.userName} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label>LAST NAME</Form.Label>
+                  <Form.Label>APELLIDOS</Form.Label>
                   <Form.Control type="text" disabled={enableFields} value={profileInfo.userLastName} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label>PHONE</Form.Label>
+                  <Form.Label>TELEFONO</Form.Label>
                   <Form.Control type="tel" disabled={enableFields} value={profileInfo.userPhone} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label>EMAIL ADDRESS</Form.Label>
+                  <Form.Label>CORREO ELECTRONICO</Form.Label>
                   <Form.Control type="email" disabled={enableFields} value={profileInfo.userEmail} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label>ACCOUNT</Form.Label>
+                  <Form.Label>CUENTA</Form.Label>
                   <Form.Control type="text" disabled={enableFields} value={profileInfo.userAccount} />
                 </Form.Group>
                 <Form.Group
                   className="mb-3"
                   controlId="exampleForm.ControlInput1"
                 >
-                  <Form.Label>ROL</Form.Label>
+                  <Form.Label>TIPO</Form.Label>
                   <Form.Control type="text" disabled={enableFields} value={profileInfo.userRol} />
                 </Form.Group>
-
+                    <hr />
                 <Button type="submit" variant="success">
-                  Save
+                  GUARDAR
                 </Button>
               </Form>
             </Card.Text>

@@ -157,7 +157,7 @@ export const Register = () => {
     <section id="SectionLoginUser">
 
       <PublicNavigation />
-      <Container className="w-75">
+      <Container className="w-75 mt-4">
         <Form
 
         >
@@ -245,7 +245,7 @@ export const Register = () => {
             <hr />
             <Button variant="success" type="button" disabled={button_on_off} onClick={() => {
               SendDataToAPI();
-             
+
             }}>
               Crear Cuenta
             </Button>

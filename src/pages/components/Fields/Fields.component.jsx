@@ -6,7 +6,7 @@ import serviceAPI from "../../../services/Fields.service";
 import './Fields.css'
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 import { useNavigate } from "react-router-dom";
-
+import {GeneralFooter} from '../GeneralFooter/GeneralFooter';
 export const Fields = () => {
 
   const navigationApp = useNavigate();
@@ -188,10 +188,13 @@ export const Fields = () => {
               </Col>
             ))}
 
+            
+
           </Row>
 
 
         </Container>
+        <GeneralFooter/>
       </div>
 
     </section>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 // eslint-disable-next-line no-unused-vars
 
@@ -6,6 +7,7 @@ import { Card, ListGroup, ListGroupItem, Button, Container } from 'react-bootstr
 import { useLocation, useNavigate } from 'react-router-dom';
 import { PublicNavigation } from '../../PublicNavigation/PublicNavigation';
 import './ViewFieldsDetails.css';
+import { GeneralFooter } from '../../GeneralFooter/GeneralFooter';
 export const ViewFieldDetails = () => {
     const { state } = useLocation();
     const [fieldDetails, setFieldDetails] = useState({});
@@ -17,13 +19,13 @@ export const ViewFieldDetails = () => {
 
         if (currentSession === undefined || null) {
 
-            navApp('/Login',{state:{fieldSelected}});
-        }else if(currentSession.userJwt === "AUTHORIZE"){
+            navApp('/Login', { state: { fieldSelected } });
+        } else if (currentSession.userJwt === "AUTHORIZE") {
 
         }
 
 
-        
+
     }
 
     useEffect(() => {
@@ -32,16 +34,14 @@ export const ViewFieldDetails = () => {
     })
 
     return (
-        <div>
+        <div className='ViewFieldContainer'>
             <PublicNavigation />
 
-            <Container fluid>
-                <Card className='mt-3'>
+            <Container >
+                <Card className='mt-5'>
 
+                    <Card.Img className='imgField img-fluid' variant="top" src={fieldDetails.details?.fieldPhotoURL} />
 
-                    <Container>
-                        <Card.Img className='imgField img-fluid' variant="top" src={fieldDetails.details?.fieldPhotoURL} />
-                    </Container>
 
                     <Card.Body>
                         <Card.Title>  {fieldDetails.details?.fieldName}</Card.Title>
@@ -61,7 +61,7 @@ export const ViewFieldDetails = () => {
 
                 </Card>
             </Container>
-
+            <GeneralFooter />
 
 
 

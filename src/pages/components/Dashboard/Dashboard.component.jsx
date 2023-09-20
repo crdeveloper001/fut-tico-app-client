@@ -3,12 +3,10 @@ import React from "react";
 import "./Dashboard.css";
 import { Row, Col, Button } from "react-bootstrap";
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
+import { GeneralFooter } from "../GeneralFooter/GeneralFooter";
 
 export const Dashboard = () => {
 
-  
-
-  
   return (
    
     <div>
@@ -38,7 +36,7 @@ export const Dashboard = () => {
 
         </Button>
       </section>
-
+      <GeneralFooter/>
     </div>
   );
 };

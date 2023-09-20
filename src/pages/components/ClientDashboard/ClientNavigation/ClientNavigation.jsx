@@ -1,75 +1,82 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react'
-import { Container, Nav, Navbar,Offcanvas,Stack } from 'react-bootstrap'
+import { Button, Container, Nav, Navbar, Offcanvas, Stack } from 'react-bootstrap'
 
 export const ClientNavigation = () => {
-  // eslint-disable-next-line no-undef
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    // eslint-disable-next-line no-undef
+    const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
 
-  const changePayloadRol = () =>{
-      localStorage.clear()
-      
-      const Payload = localStorage.getItem('payload')
-      const currentPayload = JSON.parse(Payload);
-      currentPayload.userRol = null
+    const changePayloadRol = () => {
+        localStorage.clear()
 
-     
-  }
-  
-  return (
-      <section>
-          <Navbar expand="lg" className="bg-body-tertiary ">
-              <Container>
-
-                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                  <Navbar.Collapse id="basic-navbar-nav">
-                      <Nav className="me-auto">
-
-                          <Nav.Link onClick={handleShow}>Menu</Nav.Link>
-                         
-                          
-                          <Nav.Link href="/home" onClick={() =>{changePayloadRol()}}>Salir </Nav.Link>
+        const Payload = localStorage.getItem('payload')
+        const currentPayload = JSON.parse(Payload);
+        currentPayload.userRol = null
 
 
-                      </Nav>
-                  </Navbar.Collapse>
-              </Container>
-          </Navbar>
+    }
 
-          <Offcanvas show={show} onHide={handleClose} backdrop="static">
-              <Offcanvas.Header closeButton>
-                  <Offcanvas.Title>FUT TICO APP</Offcanvas.Title>
-              </Offcanvas.Header>
-              <Offcanvas.Body>
-                  <Stack gap={3}>
-                      <div className="p-2">
-                          <Nav.Link href="/Client-Profile">
-                              <h5 className="text-center">MY PROFILE</h5>
-                          </Nav.Link>
-                      </div>
-                      
-                      <div className="p-2">
-                          <Nav.Link href="/Client-Reservation">
-                              <h5 className="text-center">MY RESERVATIONS</h5>
-                          </Nav.Link>
-                      </div>
-                      <div className="p-2">
-                          <Nav.Link href="/Client-Tournaments">
-                              <h5 className="text-center">TOURNAMENTS SUSCRIPTIONS</h5>
-                          </Nav.Link>
-                      </div>
-                      <div className="p-2">
-                          <Nav.Link href="/">
-                              <h5 className="text-center">LOG OUT</h5>
-                          </Nav.Link>
-                      </div>
-                  </Stack>
+    return (
+        <section>
+            <Navbar expand="lg" className="bg-body-tertiary ">
+                <Container fluid>
 
-              </Offcanvas.Body>
-          </Offcanvas>
-      </section>
-  )
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            <Nav.Link >
+                                <Button variant="primary" onClick={handleShow}>Menu</Button>
+                            </Nav.Link>
+
+                        </Nav>
+
+                        <Nav className="d-flex justify-content-end" activeKey="/link">
+                            <Nav.Link href="/home" >
+                                <Button variant="success" onClick={() => { changePayloadRol() }}>
+                                    Salir
+                                </Button>
+                            </Nav.Link>
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+
+            <Offcanvas show={show} onHide={handleClose} backdrop="static">
+                <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>FUT TICO APP</Offcanvas.Title>
+                </Offcanvas.Header>
+                <Offcanvas.Body>
+                    <Stack gap={3}>
+                        <div className="p-2">
+                            <Nav.Link href="/Client-Profile">
+                                <h5 className="text-center">MI PERFIL</h5>
+                            </Nav.Link>
+                        </div>
+
+                        <div className="p-2">
+                            <Nav.Link href="/Client-Reservation">
+                                <h5 className="text-center">VER RESERVACIONES</h5>
+                            </Nav.Link>
+                        </div>
+                        <div className="p-2">
+                            <Nav.Link href="/Client-Tournaments">
+                                <h5 className="text-center">VER SUSCRIPCIONES A TORNEOS</h5>
+                            </Nav.Link>
+                        </div>
+                        <div className="p-2">
+                            <Nav.Link href="/">
+                                <h5 className="text-center"><Button variant="danger" >
+                                    SALIR DE LA SESION
+                                </Button></h5>
+                            </Nav.Link>
+                        </div>
+                    </Stack>
+
+                </Offcanvas.Body>
+            </Offcanvas>
+        </section>
+    )
 }
