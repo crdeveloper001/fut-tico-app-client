@@ -4,7 +4,7 @@ import { ClientNavigation } from '../ClientNavigation/ClientNavigation'
 
 export const ClientTournaments = () => {
   return (
-    <div>
+    <div className='ClientBackground'>
         <ClientNavigation/>
         test
     </div>

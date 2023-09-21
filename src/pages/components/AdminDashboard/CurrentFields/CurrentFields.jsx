@@ -4,10 +4,10 @@ import { AdminNavigation } from '../AdminNavigation/AdminNavigation'
 
 export const CurrentFields = () => {
   return (
-    <div>
-      <AdminNavigation/>
+    <div className='AdminBackground'>
+      <AdminNavigation />
+      test
 
-      
 
     </div>
   )

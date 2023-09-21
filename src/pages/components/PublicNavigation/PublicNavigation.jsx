@@ -1,13 +1,50 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import logoIcon from '../../../assets/images/LogoCR.png';
-import { Container, Nav, Navbar, NavDropdown, Button } from 'react-bootstrap'
+import { Container, Nav, Navbar, Button } from 'react-bootstrap'
 
 export const PublicNavigation = () => {
+
+    const [currentUserName, SetCurrentUserName] = useState('');
+    const [buttonOnOff, SetButtonOnOff] = useState({});
+    const [confirmCloseSession, setCloseSession] = useState(false)
+
+    const changePayloadRol = () => {
+
+        const confimation = confirm("ESTAS SEGURO QUE QUIERE SALIR?", "CERRAR SESION");
+        if (confimation) {
+
+            setCloseSession(true)
+            localStorage.clear()
+            const Payload = localStorage.getItem('payload')
+            const currentPayload = JSON.parse(Payload);
+            currentPayload.userRol = null
+        }
+
+
+    }
+
+    useEffect(() => {
+        // Check if the payload exists in localStorage
+        const sessionPayload = JSON.parse(localStorage.getItem('payload'))
+        if (sessionPayload) {
+            SetButtonOnOff({
+                ButtonLogin: true,
+                ButtonRegister: true
+            })
+            SetCurrentUserName(sessionPayload.userAccount);
+        } else {
+            SetButtonOnOff({
+                ButtonLogin: false,
+                ButtonRegister: false
+            })
+            SetCurrentUserName('');
+        }
+
+
+    }, [])
     return (
         <div>
-
-
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container fluid>
                     <Navbar.Brand href="home">
@@ -18,22 +55,33 @@ export const PublicNavigation = () => {
                             className="d-inline-block align-top"
                             alt="Costa Rica Socces Team Logo"
                         />
+                            
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
 
-                            <Nav.Link href="/">Inicio</Nav.Link>
 
-
+                            <Nav.Link disabled={true}>
+                                {currentUserName !== '' ? <h3>Hi - {currentUserName}</h3> : ''}
+                            </Nav.Link>
                         </Nav>
                         <Nav className='d-flex justify-content-end'>
-                            <Nav.Link href="Login">
-                                <Button variant="primary">Iniciar Sesion</Button>
+                            <Nav.Link href={!buttonOnOff.ButtonLogin ? 'Login':'/'}>
+
+                                {!buttonOnOff.ButtonLogin ? <Button variant="primary">Iniciar Sesion</Button> : <Button variant="danger" size="sm" onClick={() => changePayloadRol()}>
+                                    SALIR DE LA SESION
+                                </Button>}
+
+
                             </Nav.Link>
-                            <Nav.Link href="Register">
-                                <Button variant="success">Registro</Button>
+
+                            {!buttonOnOff.ButtonRegister ? <Nav.Link>
+                                <Button variant="primary">Registro</Button>
                             </Nav.Link>
+
+                                : ''}
+
                         </Nav>
 
                     </Navbar.Collapse>

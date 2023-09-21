@@ -75,8 +75,8 @@ export const AdminNavigation = () => {
                             </Nav.Link>
                         </div>
                         <div className="p-2">
-                            <Nav.Link href="/">
-                                <h5 className="text-center"><Button variant="danger" >
+                        <Nav.Link href="/">
+                                <h5 className="text-center"><Button variant="danger" onClick={() => { changePayloadRol() }} >
                                     SALIR DE LA SESION
                                 </Button></h5>
                             </Nav.Link>

@@ -33,7 +33,7 @@ export const ClientProfile = () => {
   }, []);
 
   return (
-    <section>
+    <section className='ClientBackground'>
       <ClientNavigation />
       <Container>
         <hr />

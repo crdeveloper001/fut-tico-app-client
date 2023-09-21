@@ -21,6 +21,7 @@ export const api_ReservationsUpdateReservation = "/api/v1/Reservations/UpdateRes
 export const api_ReservationsDeleteReservation = "/api/v1/Reservations/DeleteReservation/";
 export const api_ReservationsSearchByFieldType = "/api/v1/Reservations/SearchByFieldType/";
 export const api_ReservationsSearchByGameType = "/api/v1/Reservations/SearchByGameType/";
+export const api_ReservationsSearchByUserId = "/api/v1/Reservation/SearchByFieldUserId/"
 
 //TOURNAMENTS
 export const api_TournamentsGetAllTournaments = "/api/v1/Tournaments/GetAllTournaments";

@@ -17,7 +17,7 @@ export const ViewFieldDetails = () => {
 
 
         if (localStorage.getItem('payload') == undefined || null) {
-            alert("Redirecting to login");
+            alert("DEBES INICIAR SESION PARA RESERVAR ESTA CANCHA");
             navApp('/Login');
         } else if (localStorage.getItem('payload') !== undefined || null) {
             alert("Reservado para ti");

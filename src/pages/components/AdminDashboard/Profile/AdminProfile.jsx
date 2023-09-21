@@ -34,8 +34,8 @@ export const AdminProfile = () => {
   }, []);
 
   return (
-    <section>
-      <AdminNavigation userName={JSON.stringify(profileInfo.userName)} />
+    <section className="AdminBackground">
+      <AdminNavigation />
       <Container>
         <hr />
 

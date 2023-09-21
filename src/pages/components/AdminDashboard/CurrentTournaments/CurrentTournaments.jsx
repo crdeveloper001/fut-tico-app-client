@@ -1,8 +1,12 @@
 // eslint-disable-next-line no-unused-vars
 import React from 'react'
+import { AdminNavigation } from '../AdminNavigation/AdminNavigation'
 
 export const CurrentTournaments = () => {
   return (
-    <div>CurrentTournaments</div>
+    <div className='AdminBackground'>
+      <AdminNavigation />
+      test
+    </div>
   )
 }
