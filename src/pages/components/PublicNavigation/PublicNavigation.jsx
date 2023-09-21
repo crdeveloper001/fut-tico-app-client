@@ -32,7 +32,7 @@ export const PublicNavigation = () => {
                 ButtonLogin: true,
                 ButtonRegister: true
             })
-            SetCurrentUserName(sessionPayload.userAccount);
+            SetCurrentUserName('Hi -'+sessionPayload.userAccount);
         } else {
             SetButtonOnOff({
                 ButtonLogin: false,
@@ -55,16 +55,12 @@ export const PublicNavigation = () => {
                             className="d-inline-block align-top"
                             alt="Costa Rica Socces Team Logo"
                         />
-                            
+                             <h3>{currentUserName}</h3>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
 
-
-                            <Nav.Link disabled={true}>
-                                {currentUserName !== '' ? <h3>Hi - {currentUserName}</h3> : ''}
-                            </Nav.Link>
                         </Nav>
                         <Nav className='d-flex justify-content-end'>
                             <Nav.Link href={!buttonOnOff.ButtonLogin ? 'Login':'/'}>
