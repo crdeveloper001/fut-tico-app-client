@@ -32,7 +32,7 @@ export const PublicNavigation = () => {
                 ButtonLogin: true,
                 ButtonRegister: true
             })
-            SetCurrentUserName('Hi -'+sessionPayload.userAccount);
+            SetCurrentUserName('Hi -' + sessionPayload.userAccount);
         } else {
             SetButtonOnOff({
                 ButtonLogin: false,
@@ -55,7 +55,7 @@ export const PublicNavigation = () => {
                             className="d-inline-block align-top"
                             alt="Costa Rica Socces Team Logo"
                         />
-                             <h3>{currentUserName}</h3>
+                        <h3>{currentUserName}</h3>
                     </Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
@@ -63,16 +63,14 @@ export const PublicNavigation = () => {
 
                         </Nav>
                         <Nav className='d-flex justify-content-end'>
-                            <Nav.Link href={!buttonOnOff.ButtonLogin ? 'Login':'/'}>
+                            <Nav.Link href={!buttonOnOff.ButtonLogin ? 'Login' : '/'}>
 
                                 {!buttonOnOff.ButtonLogin ? <Button variant="primary">Iniciar Sesion</Button> : <Button variant="danger" size="sm" onClick={() => changePayloadRol()}>
                                     SALIR DE LA SESION
                                 </Button>}
-
-
                             </Nav.Link>
-
-                            {!buttonOnOff.ButtonRegister ? <Nav.Link>
+                            {!buttonOnOff.ButtonRegister ? 
+                            <Nav.Link href={!buttonOnOff.ButtonLogin ? 'Register' : '/'}>
                                 <Button variant="primary">Registro</Button>
                             </Nav.Link>
 

@@ -6,18 +6,29 @@ import serviceAPI from "../../../services/Fields.service";
 import './Fields.css'
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 import { useNavigate } from "react-router-dom";
-import {GeneralFooter} from '../GeneralFooter/GeneralFooter';
+import { GeneralFooter } from '../GeneralFooter/GeneralFooter';
 export const Fields = () => {
 
   const navigationApp = useNavigate();
   const [fields, setFields] = useState([]);
   const [nameField, setNameField] = useState('');
-  const [errorNotFound, setErrorNotFound] = useState(false);
+  const [errorNotFound, setErrorNotFound] = useState({
+    active:false,
+    message:""
+  });
   const [fieldDetails, setFieldDetails] = useState({})
 
   const LoadFieldInfo = () => {
+
     serviceAPI.GetAllFields().then(apiResponse => {
-      setFields(apiResponse)
+
+      if (apiResponse.data != null) {
+        setFields(apiResponse)
+      }else{
+        setErrorNotFound({active:false,message:"OCURRIO UN ERROR AL CARGAR LA INFORMACION, INTENTE DE NUEVO"});
+      }
+
+      
     })
   }
 
@@ -33,9 +44,15 @@ export const Fields = () => {
 
     } else {
       const response = await serviceAPI.SearchByLocation(event.target.value).then(apiResponse => {
-        setFields(apiResponse.data)
+
+        if (apiResponse.data != null) {
+          setFields(apiResponse.data)
+          setErrorNotFound({active:false,message:"NO HAY CANCHAS DISPONIBLES EN"+event.target.value});
+        } else if (apiResponse === undefined) {
+          setErrorNotFound({active:true,message:"NO HAY CANCHAS DISPONIBLES EN"+event.target.value});
+        }
       });
-      setErrorNotFound(false);
+
     }
 
   }
@@ -43,13 +60,18 @@ export const Fields = () => {
 
     if (event.target.value === "Todas") {
       LoadFieldInfo();
-      setErrorNotFound(false);
+      setErrorNotFound({active:false,message:"NO HAY CANCHAS DE TIPO "+event.target.value});
     } else {
       const response = await serviceAPI.SearchByGameType(event.target.value).then(apiResponse => {
-        setFields(apiResponse.data)
+        if (apiResponse.data != null) {
+          setFields(apiResponse.data);
+          setErrorNotFound({active:false,message:"NO HAY CANCHAS DE TIPO: "+event.target.value});
+        } else if (apiResponse.data === undefined) {
+          setErrorNotFound({active:true,message:"NO HAY CANCHAS DE TIPO "+event.target.value});
+        }
       });
 
-      setErrorNotFound(false);
+
     }
 
   }
@@ -58,9 +80,9 @@ export const Fields = () => {
     try {
       const response = await serviceAPI.SearchByGameName(nameField).then(apiResponse => {
         if (apiResponse.data == undefined) {
-          setErrorNotFound(true)
+          setErrorNotFound({active:true,message:"SIN RESULTADOS DE BUSQUEDA"});
         } else {
-          setErrorNotFound(false)
+          setErrorNotFound({active:false,message:"NO HAY CANCHAS DISPONIBLES EN"+event.target.value});
           setFields(apiResponse.data)
         }
       });
@@ -73,7 +95,9 @@ export const Fields = () => {
 
   useEffect(() => {
     LoadFieldInfo();
-
+    if (fields === undefined) {
+      setFieldDetails([]);
+    }
   }, [])
   return (
 
@@ -93,6 +117,7 @@ export const Fields = () => {
                   <Form.Control type="search" placeholder="nombre" id="SearchFieldBox" onInput={(e) => {
                     if (e.target.value === "") {
                       LoadFieldInfo();
+                      setErrorNotFound({active:false,message:""});
                     } else {
                       setNameField(e.target.value)
                     }
@@ -110,8 +135,6 @@ export const Fields = () => {
                 <Form.Group>
                   <Form.Label className="text-white">Categoria de Juego</Form.Label>
                   <Form.Select onClick={(e) => {
-
-
                     FilterByGameType(e);
                   }}>
                     <option value="Todas">Todas</option>
@@ -147,7 +170,7 @@ export const Fields = () => {
           </Row>
           <br />
 
-          {errorNotFound ? <Alert className="mt-3" variant="danger" title="No results found in the search">NO SE ENCONTRO LA CANCHA! INTENTA DE NUEVO</Alert> : ""}
+          {errorNotFound.active ? <Alert className="mt-3" variant="danger" title="No results found in the search">{errorNotFound.message}</Alert> : ""}
 
           <br />
 
@@ -155,46 +178,39 @@ export const Fields = () => {
             <hr />
 
 
-            {fields.map((item) => (
+            {fields != undefined ? fields.map((item) => (
+
               <Col key={item.id} xs={12} sm={6} md={4} lg={4} className="mb-5">
                 <Card>
-
                   <Card.Img className="img-fluid" variant="top" src={item.fieldPhotoURL} />
-
                   <Card.Body>
                     <Card.Title>{item.fieldName}</Card.Title>
                     <Row>
                       <Col>
-
-
-
                         <Button variant="danger" size="sm" onClick={() => {
                           setFieldDetails(item);
                           console.log("state button:", fieldDetails);
                           LoadFieldDetails(item)
-
                         }}>
                           Ver Detalles
                         </Button>
-
                         <Button target="blank" href="https://goo.gl/maps/dAC36bQBks6nsW1f6" variant="link" size="sm" onClick={() => console.log("Link")}>
                           Localizacion
                         </Button>
                       </Col>
-
                     </Row>
                   </Card.Body>
                 </Card>
               </Col>
-            ))}
+            )) : ""}
 
-            
+
 
           </Row>
 
 
         </Container>
-        <GeneralFooter/>
+        <GeneralFooter />
       </div>
 
     </section>

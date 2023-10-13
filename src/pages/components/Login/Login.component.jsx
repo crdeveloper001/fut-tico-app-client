@@ -83,21 +83,23 @@ export const Login = () => {
               alert('Bienvenido Administrador: ' + `${localPayload.userName}`);
               navigationApp('/Admin-Dashboard');
               break;
-
+            
             default:
               alert("Unknown role");
 
           }
           break;
         case "INVALIDE_ACCOUNT":
-
+          localStorage.clear()
           setTimeout(() => {
             SetErrorValidatorAuth("");
           }, 5000);
 
           SetErrorValidatorAuth('Usuario o Contraseña incorrecto');
+          
           break;
         case "NO_PARAMS":
+          localStorage.clear()
           setTimeout(() => {
             SetErrorValidatorAuth('');
           }, 5000);
