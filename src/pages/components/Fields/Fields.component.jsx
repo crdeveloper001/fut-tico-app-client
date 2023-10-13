@@ -18,17 +18,11 @@ export const Fields = () => {
   });
   const [fieldDetails, setFieldDetails] = useState({})
 
-  const LoadFieldInfo = () => {
+  const LoadFieldInfo = async () => {
 
-    serviceAPI.GetAllFields().then(apiResponse => {
-
-      if (apiResponse.data != null) {
-        setFields(apiResponse)
-      }else{
-        setErrorNotFound({active:false,message:"OCURRIO UN ERROR AL CARGAR LA INFORMACION, INTENTE DE NUEVO"});
-      }
-
-      
+    const apiResponse = await serviceAPI.GetAllFields().then(apiResponse => {
+      setFields(apiResponse)
+      setErrorNotFound({active:false,message:"OCURRIO UN ERROR AL CARGAR LA CANCHAS, INTENTA MAS TARDE"});
     })
   }
 
