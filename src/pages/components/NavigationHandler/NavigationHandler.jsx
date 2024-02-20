@@ -4,11 +4,8 @@ import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 
 // eslint-disable-next-line no-unused-vars
 export const NavigationHandler = (client_Navigation, administrator_Navigation, general_Navigation) => {
- 
   const [generalNavigation, SetGeneralNavigation] = useState(true);
-
   const ShowOrHideCurrentNavigation = () => {
-    
   }
 
   useEffect(() => {
@@ -20,8 +17,6 @@ export const NavigationHandler = (client_Navigation, administrator_Navigation, g
   return (
 
     <section>
-
-    
       {!generalNavigation ? <PublicNavigation /> : ""}
 
     </section>
