@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import serviceAPI from "../../../hooks/Authentication.service";
+import serviceAPI from "../../../services/Authentication.service";
 import { Container, Card, Form, Button, FloatingLabel, Alert } from "react-bootstrap";
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 
@@ -110,9 +110,6 @@ export const Login = () => {
         default:
           break;
       }
-
-
-
       return response;
     } catch (error) {
 

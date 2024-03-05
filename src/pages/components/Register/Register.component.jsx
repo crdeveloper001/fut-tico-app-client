@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from "react";
 import { Container, Form, Button, Alert, ListGroup } from "react-bootstrap";
-import serviceAPI from "../../../hooks/Users.service";
+import serviceAPI from "../../../services/Users.service";
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 
 export const Register = () => {
@@ -62,9 +62,6 @@ export const Register = () => {
     }
 
   };
-
-
-
   const validateName = (e) => {
     let value = e.target.value;
     const update = { ...userProfile };

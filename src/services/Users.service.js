@@ -20,8 +20,8 @@ async function GetAllCurrentUsers() {
     .catch((error) => {
       return console.log(
         "OCURRIO UN ERROR AL OBTENER LA INFO DE LOS USUARIOS" +
-        "\n" +
-        JSON.stringify(error)
+          "\n" +
+          JSON.stringify(error)
       );
     });
 }
@@ -62,17 +62,17 @@ async function RegisterNewUser(userProfileData) {
           userRol: userProfileData.userRol,
           userActive: userProfileData.userActive,
         },
-      })
+      });
 
       return apiResponse;
     }
   } catch (error) {
-    console.error('Error:', error.response.data);
+    console.error("Error:", error.response.data);
     throw error; // Re-throw the error to be caught by the caller
   }
 }
 
-async function UpdateUser(updateData) {
+async function UpdateUserAccount(updateData) {
   console.log(updateData);
 
   if (updateData != null) {
@@ -81,6 +81,17 @@ async function UpdateUser(updateData) {
       url: BASE_URL + api_UsersUpdateProfile,
       headers: {
         "Content-Type": "application/json",
+      },
+      data: {
+        id: updateData.id,
+        userName: updateData.userName,
+        userLastName: updateData.userLastName,
+        userPhone: updateData.userPhone,
+        userEmail: updateData.userEmail,
+        userAccount: updateData.userAccount,
+        userAccountPassword: updateData.userAccountPassword,
+        userRol: updateData.userRol,
+        userActive: updateData.userActive,
       },
     })
       .then((apiResponse) => {
@@ -113,6 +124,6 @@ export default {
   GetAllCurrentUsers,
   SearchbyRolType,
   RegisterNewUser,
-  UpdateUser,
+  UpdateUserAccount,
   DeleteUserWithiId,
 };

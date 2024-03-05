@@ -10,7 +10,7 @@ import {
   Button,
   Alert,
 } from "react-bootstrap";
-import serviceAPI from "../../../hooks/Fields.service";
+import serviceAPI from "../../../services/Fields.service";
 import "./Fields.css";
 import { PublicNavigation } from "../PublicNavigation/PublicNavigation";
 import { useNavigate } from "react-router-dom";

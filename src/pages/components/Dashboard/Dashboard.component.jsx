@@ -30,8 +30,6 @@ export const Dashboard = () => {
           size="sm"
           variant="success"
           className="justify-content-center"
-
-
         >
           BUSCA TU CANCHA AQUI
 
