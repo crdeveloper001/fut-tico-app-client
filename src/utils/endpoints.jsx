@@ -1,6 +1,6 @@
 //API BASE ENDPOINTS
-export const BASE_URL = 'http://localhost:8080';
-//export const BASE_URL = "https://app-a51f3f31-e875-43b6-b74d-ef19d9045215.cleverapps.io";
+//export const BASE_URL = 'http://localhost:8080';
+export const BASE_URL = "https://fut-tico-app-server-green-cherry-7709.fly.dev";
 
 //AUTHENTICATION
 export const api_Authentication = "/api/v1/Authorization/AuthenticateProfile"
