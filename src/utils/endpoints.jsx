@@ -1,6 +1,6 @@
 //API BASE ENDPOINTS
 //export const BASE_URL = 'http://localhost:8080';
-export const BASE_URL = "https://fut-tico-app-server-green-cherry-7709.fly.dev";
+export const BASE_URL = "https://fut-tico-app-server.onrender.com";
 
 //AUTHENTICATION
 export const api_Authentication = "/api/v1/Authorization/AuthenticateProfile"
